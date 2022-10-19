@@ -13,6 +13,7 @@
   <SupportUrl DefaultValue="https://album.med.br/addin/help.php"/>
   <AppDomains>
     <AppDomain>https://album.med.br</AppDomain>
+    <AppDomain>https://dagr9782.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Presentation"/>
