@@ -50376,13 +50376,13 @@ var App = /*#__PURE__*/function (_React$Component) {
       this.setState({
         listItems: [{
           icon: "Ribbon",
-          primaryText: "Create certificates. Crie certificados."
+          primaryText: this.UIText.Certificado
         }, {
           icon: "QRCode",
-          primaryText: "Include custom QRCodes. Inclua QRCodes customizados."
+          primaryText: this.UIText.QRCode
         }, {
           icon: "ImageSearch",
-          primaryText: "Search and add AlbumMed images. Busque e adicione imagens AlbumMed."
+          primaryText: this.UIText.Imagens
         }],
         disabled: false
       });
