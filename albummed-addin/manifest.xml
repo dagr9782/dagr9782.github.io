@@ -74,13 +74,19 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="AlbumMed ready to use! AlbumMed pronto para usar!"/>
+        <bt:String id="GetStarted.Title" DefaultValue="AlbumMed ready to use!">
+          <bt:Override Locale="pt-br" Value="AlbumMed pronto para usar!" />
+        </bt:String>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="AlbumMed"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Click the AlbumMed button in the Home tab to use it. Clique no botão AlbumMed no Início para usá-lo."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to view AlbumMed features. Clique para ver funções do AlbumMed."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Click the AlbumMed button in the Home tab to use it.">
+          <bt:Override Locale="pt-br" Value="Clique no botão AlbumMed no Início para usá-lo." />
+        </bt:String>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to view AlbumMed features.">
+          <bt:Override Locale="pt-br" Value="Clique para ver funções do AlbumMed." />
+        </bt:String>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
