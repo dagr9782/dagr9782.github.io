@@ -78,8 +78,8 @@
         <bt:String id="GetStarted.Title" DefaultValue="AlbumMed ready to use!">
           <bt:Override Locale="pt-br" Value="AlbumMed pronto para usar!" />
         </bt:String>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Images & more">
-          <bt:Override Locale="pt-br" Value="Imagens e mais" />
+        <bt:String id="CommandsGroup.Label" DefaultValue="Images &amp; more!">
+          <bt:Override Locale="pt-br" Value="Imagens e mais!" />
         </bt:String>
         <bt:String id="TaskpaneButton.Label" DefaultValue="AlbumMed"/>
       </bt:ShortStrings>
