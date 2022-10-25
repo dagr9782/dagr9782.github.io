@@ -51314,59 +51314,58 @@ var App = /*#__PURE__*/function (_React$Component) {
         }
       }, _callee);
     })));
-    _defineProperty(_assertThisInitialized(_this), "getQrCode", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var userName,
-        repoName,
-        url,
-        response,
-        jsonResponse,
-        _args2 = arguments;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              userName = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "OfficeDev";
-              repoName = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : "office-js";
-              //You can change this URL to any web request you want to work with.
-              url = "https://api.github.com/repos/".concat(userName, "/").concat(repoName);
-              _context2.next = 5;
-              return fetch(url);
-            case 5:
-              response = _context2.sent;
-              if (response.ok) {
+    _defineProperty(_assertThisInitialized(_this), "getQrCode", /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(u) {
+        var url, response, QrCode;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                //You can change this URL to any web request you want to work with.
+                url = "https://album.med.br/addin/qrcode.php?u=".concat(u);
+                _context2.next = 3;
+                return fetch(url);
+              case 3:
+                response = _context2.sent;
+                if (response.ok) {
+                  _context2.next = 6;
+                  break;
+                }
+                throw new Error(response.statusText);
+              case 6:
                 _context2.next = 8;
-                break;
-              }
-              throw new Error(response.statusText);
-            case 8:
-              _context2.next = 10;
-              return response.json();
-            case 10:
-              jsonResponse = _context2.sent;
-              return _context2.abrupt("return", jsonResponse.watchers_count);
-            case 12:
-            case "end":
-              return _context2.stop();
+                return response.body();
+              case 8:
+                QrCode = _context2.sent;
+                return _context2.abrupt("return", QrCode);
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
           }
-        }
-      }, _callee2);
-    })));
+        }, _callee2);
+      }));
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
     _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      var urlQrCode;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              //const urlQrCode = $("#urlqrcode").val();
+              urlQrCode = $("#urlqrcode").val();
               Office.context.document.setSelectedDataAsync(
               //urlQrCode,
-              _this.getQrCode(), {
+              _this.getQrCode(urlQrCode), {
                 coercionType: Office.CoercionType.Text
               }, function (result) {
                 if (result.status === Office.AsyncResultStatus.Failed) {
                   console.error(result.error.message);
                 }
               });
-            case 1:
+            case 2:
             case "end":
               return _context3.stop();
           }
@@ -51492,7 +51491,7 @@ var UIStrings = function () {
   };
   return UIStrings;
 }();
- void function register() { /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "C:\\Git\\AlbumMed\\src\\taskpane\\components\\App.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "C:\\Git\\AlbumMed\\src\\taskpane\\components\\App.js"); } }(); 
+ void function register() { // eslint-disable-line no-extra-semi /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\App.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\App.js"); } }(); 
 
 /***/ }),
 
@@ -51558,7 +51557,7 @@ Header.propTypes = {
   logo: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
   message: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
 };
- void function register() { /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "C:\\Git\\AlbumMed\\src\\taskpane\\components\\Header.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "C:\\Git\\AlbumMed\\src\\taskpane\\components\\Header.js"); } }(); 
+ void function register() { // eslint-disable-line no-extra-semi /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\Header.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\Header.js"); } }(); 
 
 /***/ }),
 
@@ -51630,7 +51629,7 @@ HeroList.propTypes = {
   items: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().array),
   message: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
 };
- void function register() { /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "C:\\Git\\AlbumMed\\src\\taskpane\\components\\HeroList.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "C:\\Git\\AlbumMed\\src\\taskpane\\components\\HeroList.js"); } }(); 
+ void function register() { // eslint-disable-line no-extra-semi /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\HeroList.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\HeroList.js"); } }(); 
 
 /***/ }),
 
@@ -51702,7 +51701,7 @@ Progress.propTypes = {
   message: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
   title: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string)
 };
- void function register() { /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "C:\\Git\\AlbumMed\\src\\taskpane\\components\\Progress.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "C:\\Git\\AlbumMed\\src\\taskpane\\components\\Progress.js"); } }(); 
+ void function register() { // eslint-disable-line no-extra-semi /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\Progress.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\components\\Progress.js"); } }(); 
 
 /***/ }),
 
@@ -51745,7 +51744,7 @@ Office.onReady(function () {
 /* Initial render showing a progress bar */
 render(_components_App__WEBPACK_IMPORTED_MODULE_0__["default"]);
 if (false) {}
- void function register() { /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "C:\\Git\\AlbumMed\\src\\taskpane\\index.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "C:\\Git\\AlbumMed\\src\\taskpane\\index.js"); } }(); 
+ void function register() { // eslint-disable-line no-extra-semi /* react-hot-loader/webpack */ var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\index.js"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "D:\\Git\\AlbumMed-AddIn\\src\\taskpane\\index.js"); } }(); 
 
 /***/ }),
 
