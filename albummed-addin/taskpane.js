@@ -51314,63 +51314,39 @@ var App = /*#__PURE__*/function (_React$Component) {
         }
       }, _callee);
     })));
-    _defineProperty(_assertThisInitialized(_this), "getQrCode", /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(u) {
-        var url, response, QrCode;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                //You can change this URL to any web request you want to work with.
-                url = "https://album.med.br/addin/qrcode.php?u=".concat(u);
-                _context2.next = 3;
-                return fetch(url);
-              case 3:
-                response = _context2.sent;
-                if (response.ok) {
-                  _context2.next = 6;
-                  break;
-                }
-                throw new Error(response.statusText);
-              case 6:
-                _context2.next = 8;
-                return response.body();
-              case 8:
-                QrCode = _context2.sent;
-                return _context2.abrupt("return", QrCode);
-              case 10:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-      return function (_x) {
-        return _ref2.apply(this, arguments);
-      };
-    }());
-    _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var urlQrCode;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+    _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var urlQrCode, url, response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               urlQrCode = $("#urlqrcode").val();
-              Office.context.document.setSelectedDataAsync(
-              //urlQrCode,
-              _this.getQrCode(urlQrCode), {
+              url = "https://album.med.br/addin/qrcode.php?u=".concat(urlQrCode);
+              _context2.next = 4;
+              return fetch(url);
+            case 4:
+              response = _context2.sent;
+              if (response.ok) {
+                _context2.next = 7;
+                break;
+              }
+              throw new Error(response.statusText);
+            case 7:
+              Office.context.document.setSelectedDataAsync(response.text,
+              //"teste",
+              {
                 coercionType: Office.CoercionType.Text
               }, function (result) {
                 if (result.status === Office.AsyncResultStatus.Failed) {
-                  console.error(result.error.message);
+                  console.error('Erro %d: "%s".', result.error.code, result.error.message);
                 }
               });
-            case 2:
+            case 8:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
         }
-      }, _callee3);
+      }, _callee2);
     })));
     _this.state = {
       listItems: [],
