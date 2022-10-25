@@ -51250,12 +51250,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* binding */ App; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fluentui/react */ "./node_modules/@fluentui/react/lib/components/Button/DefaultButton/DefaultButton.js");
-/* harmony import */ var _fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react/lib/Button */ "./node_modules/@fluentui/react/lib/components/Button/PrimaryButton/PrimaryButton.js");
-/* harmony import */ var _fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react/lib/TextField */ "./node_modules/@fluentui/react/lib/components/TextField/TextField.js");
-/* harmony import */ var _fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react/lib/Label */ "./node_modules/@fluentui/react/lib/components/Label/Label.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react/lib/Button */ "./node_modules/@fluentui/react/lib/components/Button/PrimaryButton/PrimaryButton.js");
+/* harmony import */ var _fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react/lib/TextField */ "./node_modules/@fluentui/react/lib/components/TextField/TextField.js");
+/* harmony import */ var _fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fluentui/react/lib/Label */ "./node_modules/@fluentui/react/lib/components/Label/Label.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./src/taskpane/components/Header.js");
 /* harmony import */ var _HeroList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HeroList */ "./src/taskpane/components/HeroList.js");
 /* harmony import */ var _Progress__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Progress */ "./src/taskpane/components/Progress.js");
@@ -51285,7 +51284,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* global console, Office, require */
+/* global console, Office, require, fetch */
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
   var _super = _createSuper(App);
@@ -51315,29 +51314,64 @@ var App = /*#__PURE__*/function (_React$Component) {
         }
       }, _callee);
     })));
-    _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var teste;
+    _defineProperty(_assertThisInitialized(_this), "getQrCode", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var userName,
+        repoName,
+        url,
+        response,
+        jsonResponse,
+        _args2 = arguments;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              // eslint-disable-next-line no-undef
-              teste = $("#teste").val();
-              Office.context.document.setSelectedDataAsync(teste,
-              //"Hello Fluent UI React!",
-              {
+              userName = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "OfficeDev";
+              repoName = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : "office-js";
+              //You can change this URL to any web request you want to work with.
+              url = "https://api.github.com/repos/".concat(userName, "/").concat(repoName);
+              _context2.next = 5;
+              return fetch(url);
+            case 5:
+              response = _context2.sent;
+              if (response.ok) {
+                _context2.next = 8;
+                break;
+              }
+              throw new Error(response.statusText);
+            case 8:
+              _context2.next = 10;
+              return response.json();
+            case 10:
+              jsonResponse = _context2.sent;
+              return _context2.abrupt("return", jsonResponse.watchers_count);
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    })));
+    _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              //const urlQrCode = $("#urlqrcode").val();
+              Office.context.document.setSelectedDataAsync(
+              //urlQrCode,
+              _this.getQrCode(), {
                 coercionType: Office.CoercionType.Text
               }, function (result) {
                 if (result.status === Office.AsyncResultStatus.Failed) {
                   console.error(result.error.message);
                 }
               });
-            case 2:
+            case 1:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2);
+      }, _callee3);
     })));
     _this.state = {
       listItems: [],
@@ -51399,19 +51433,10 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeroList__WEBPACK_IMPORTED_MODULE_2__["default"], {
         message: UIText.Introduction,
         items: this.state.listItems
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "ms-font-l"
-      }, "Para inserir um texto, clique ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Inserir"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_4__.DefaultButton, {
-        className: "ms-welcome__action",
-        iconProps: {
-          iconName: "ChevronRight"
-        },
-        onClick: this.click
-      }, "Inserir"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_5__.Label, null, UIText.InsertText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_6__.TextField, {
-        id: "teste",
-        label: "URL para QR Code",
-        prefix: "https://"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_4__.Label, null, UIText.InsertText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_5__.TextField, {
+        id: "urlqrcode",
+        placeholder: "https://"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
         "data-automation-id": "test",
         text: UIText.BotaoTexto,
         onClick: this.insertText
@@ -51422,8 +51447,8 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 App.propTypes = {
-  title: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
-  isOfficeInitialized: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().bool)
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().string),
+  isOfficeInitialized: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool)
 };
 var UIStrings = function () {
   "use strict";
