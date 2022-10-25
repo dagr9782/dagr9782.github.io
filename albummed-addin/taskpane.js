@@ -12551,6 +12551,949 @@ var SpinnerType;
 
 /***/ }),
 
+/***/ "./node_modules/@fluentui/react/lib/components/TextField/TextField.base.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@fluentui/react/lib/components/TextField/TextField.base.js ***!
+  \*********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TextFieldBase": function() { return /* binding */ TextFieldBase; }
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Label */ "./node_modules/@fluentui/react/lib/components/Label/Label.js");
+/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Icon */ "./node_modules/@fluentui/react/lib/components/Icon/Icon.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/classNamesFunction.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/initializeComponentRef.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/Async.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/warn/warnMutuallyExclusive.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/getId.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/DelayedRender.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/warn/warnControlledUsage.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/warn/warn.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/controlled.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/properties.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/dom/getWindow.js");
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/ie11Detector.js");
+
+
+
+
+
+var getClassNames = (0,_Utilities__WEBPACK_IMPORTED_MODULE_1__.classNamesFunction)();
+var DEFAULT_STATE_VALUE = '';
+var COMPONENT_NAME = 'TextField';
+var REVEAL_ICON_NAME = 'RedEye';
+var HIDE_ICON_NAME = 'Hide';
+var TextFieldBase = /** @class */ (function (_super) {
+    (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(TextFieldBase, _super);
+    function TextFieldBase(props) {
+        var _this = _super.call(this, props) || this;
+        _this._textElement = react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+        _this._onFocus = function (ev) {
+            if (_this.props.onFocus) {
+                _this.props.onFocus(ev);
+            }
+            _this.setState({ isFocused: true }, function () {
+                if (_this.props.validateOnFocusIn) {
+                    _this._validate(_this.value);
+                }
+            });
+        };
+        _this._onBlur = function (ev) {
+            if (_this.props.onBlur) {
+                _this.props.onBlur(ev);
+            }
+            _this.setState({ isFocused: false }, function () {
+                if (_this.props.validateOnFocusOut) {
+                    _this._validate(_this.value);
+                }
+            });
+        };
+        _this._onRenderLabel = function (props) {
+            var label = props.label, required = props.required;
+            // IProcessedStyleSet definition requires casting for what Label expects as its styles prop
+            var labelStyles = _this._classNames.subComponentStyles
+                ? _this._classNames.subComponentStyles.label
+                : undefined;
+            if (label) {
+                return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Label__WEBPACK_IMPORTED_MODULE_3__.Label, { required: required, htmlFor: _this._id, styles: labelStyles, disabled: props.disabled, id: _this._labelId }, props.label));
+            }
+            return null;
+        };
+        _this._onRenderDescription = function (props) {
+            if (props.description) {
+                return react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _this._classNames.description }, props.description);
+            }
+            return null;
+        };
+        _this._onRevealButtonClick = function (event) {
+            _this.setState(function (prevState) { return ({ isRevealingPassword: !prevState.isRevealingPassword }); });
+        };
+        _this._onInputChange = function (event) {
+            // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
+            // which have *probably* been fixed now:
+            // - https://github.com/microsoft/fluentui/issues/744 (likely fixed)
+            // - https://github.com/microsoft/fluentui/issues/824 (confirmed fixed)
+            var _a, _b;
+            // TODO (Fabric 8?) - Switch to calling only onChange. This switch is pretty disruptive for
+            // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.
+            var element = event.target;
+            var value = element.value;
+            // Ignore this event if any of the following are true:
+            // - the value is undefined (in case one of the IE bugs comes back)
+            // - it's a duplicate event (important since onInputChange is called twice per actual user event)
+            // - it's the same as the previous value
+            var previousValue = _getValue(_this.props, _this.state) || '';
+            if (value === undefined || value === _this._lastChangeValue || value === previousValue) {
+                _this._lastChangeValue = undefined;
+                return;
+            }
+            _this._lastChangeValue = value;
+            (_b = (_a = _this.props).onChange) === null || _b === void 0 ? void 0 : _b.call(_a, event, value);
+            if (!_this._isControlled) {
+                // ONLY if this is an uncontrolled component, update the displayed value.
+                // (Controlled components must update the `value` prop from `onChange`.)
+                _this.setState({ uncontrolledValue: value });
+            }
+        };
+        (0,_Utilities__WEBPACK_IMPORTED_MODULE_4__.initializeComponentRef)(_this);
+        _this._async = new _Utilities__WEBPACK_IMPORTED_MODULE_5__.Async(_this);
+        if (true) {
+            (0,_Utilities__WEBPACK_IMPORTED_MODULE_6__.warnMutuallyExclusive)(COMPONENT_NAME, props, {
+                errorMessage: 'onGetErrorMessage',
+            });
+        }
+        _this._fallbackId = (0,_Utilities__WEBPACK_IMPORTED_MODULE_7__.getId)(COMPONENT_NAME);
+        _this._descriptionId = (0,_Utilities__WEBPACK_IMPORTED_MODULE_7__.getId)(COMPONENT_NAME + 'Description');
+        _this._labelId = (0,_Utilities__WEBPACK_IMPORTED_MODULE_7__.getId)(COMPONENT_NAME + 'Label');
+        _this._prefixId = (0,_Utilities__WEBPACK_IMPORTED_MODULE_7__.getId)(COMPONENT_NAME + 'Prefix');
+        _this._suffixId = (0,_Utilities__WEBPACK_IMPORTED_MODULE_7__.getId)(COMPONENT_NAME + 'Suffix');
+        _this._warnControlledUsage();
+        var _a = props.defaultValue, defaultValue = _a === void 0 ? DEFAULT_STATE_VALUE : _a;
+        if (typeof defaultValue === 'number') {
+            // This isn't allowed per the props, but happens anyway.
+            defaultValue = String(defaultValue);
+        }
+        _this.state = {
+            uncontrolledValue: _this._isControlled ? undefined : defaultValue,
+            isFocused: false,
+            errorMessage: '',
+        };
+        _this._delayedValidate = _this._async.debounce(_this._validate, _this.props.deferredValidationTime);
+        _this._lastValidation = 0;
+        return _this;
+    }
+    Object.defineProperty(TextFieldBase.prototype, "value", {
+        /**
+         * Gets the current value of the text field.
+         */
+        get: function () {
+            return _getValue(this.props, this.state);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    TextFieldBase.prototype.componentDidMount = function () {
+        this._adjustInputHeight();
+        if (this.props.validateOnLoad) {
+            this._validate(this.value);
+        }
+    };
+    TextFieldBase.prototype.componentWillUnmount = function () {
+        this._async.dispose();
+    };
+    TextFieldBase.prototype.getSnapshotBeforeUpdate = function (prevProps, prevState) {
+        return {
+            selection: [this.selectionStart, this.selectionEnd],
+        };
+    };
+    TextFieldBase.prototype.componentDidUpdate = function (prevProps, prevState, snapshot) {
+        var props = this.props;
+        var _a = (snapshot || {}).selection, selection = _a === void 0 ? [null, null] : _a;
+        var start = selection[0], end = selection[1];
+        if (!!prevProps.multiline !== !!props.multiline && prevState.isFocused) {
+            // The text field has just changed between single- and multi-line, so we need to reset focus
+            // and selection/cursor.
+            this.focus();
+            if (start !== null && end !== null && start >= 0 && end >= 0) {
+                this.setSelectionRange(start, end);
+            }
+        }
+        if (prevProps.value !== props.value) {
+            // Only if the value in props changed, reset the record of the last value seen by a
+            // change/input event (don't do this if the value in state changed, since at least in tests
+            // the state update may happen before the second event in a series)
+            this._lastChangeValue = undefined;
+        }
+        var prevValue = _getValue(prevProps, prevState);
+        var value = this.value;
+        if (prevValue !== value) {
+            // Handle controlled/uncontrolled warnings and status
+            this._warnControlledUsage(prevProps);
+            // Clear error message if needed
+            // TODO: is there any way to do this without an extra render?
+            if (this.state.errorMessage && !props.errorMessage) {
+                this.setState({ errorMessage: '' });
+            }
+            // Adjust height if needed based on new value
+            this._adjustInputHeight();
+            // TODO: #5875 added logic to trigger validation in componentWillReceiveProps and other places.
+            // This seems a bit odd and hard to integrate with the new approach.
+            // (Starting to think we should just put the validation logic in a separate wrapper component...?)
+            if (_shouldValidateAllChanges(props)) {
+                this._delayedValidate(value);
+            }
+        }
+    };
+    TextFieldBase.prototype.render = function () {
+        var _a = this.props, borderless = _a.borderless, className = _a.className, disabled = _a.disabled, invalid = _a.invalid, iconProps = _a.iconProps, inputClassName = _a.inputClassName, label = _a.label, multiline = _a.multiline, required = _a.required, underlined = _a.underlined, prefix = _a.prefix, resizable = _a.resizable, suffix = _a.suffix, theme = _a.theme, styles = _a.styles, autoAdjustHeight = _a.autoAdjustHeight, canRevealPassword = _a.canRevealPassword, revealPasswordAriaLabel = _a.revealPasswordAriaLabel, type = _a.type, _b = _a.onRenderPrefix, onRenderPrefix = _b === void 0 ? this._onRenderPrefix : _b, _c = _a.onRenderSuffix, onRenderSuffix = _c === void 0 ? this._onRenderSuffix : _c, _d = _a.onRenderLabel, onRenderLabel = _d === void 0 ? this._onRenderLabel : _d, _e = _a.onRenderDescription, onRenderDescription = _e === void 0 ? this._onRenderDescription : _e;
+        var _f = this.state, isFocused = _f.isFocused, isRevealingPassword = _f.isRevealingPassword;
+        var errorMessage = this._errorMessage;
+        var isInvalid = typeof invalid === 'boolean' ? invalid : !!errorMessage;
+        var hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
+        var classNames = (this._classNames = getClassNames(styles, {
+            theme: theme,
+            className: className,
+            disabled: disabled,
+            focused: isFocused,
+            required: required,
+            multiline: multiline,
+            hasLabel: !!label,
+            hasErrorMessage: isInvalid,
+            borderless: borderless,
+            resizable: resizable,
+            hasIcon: !!iconProps,
+            underlined: underlined,
+            inputClassName: inputClassName,
+            autoAdjustHeight: autoAdjustHeight,
+            hasRevealButton: hasRevealButton,
+        }));
+        return (
+        // eslint-disable-next-line deprecation/deprecation
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { ref: this.props.elementRef, className: classNames.root },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: classNames.wrapper },
+                onRenderLabel(this.props, this._onRenderLabel),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: classNames.fieldGroup },
+                    (prefix !== undefined || this.props.onRenderPrefix) && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: classNames.prefix, id: this._prefixId }, onRenderPrefix(this.props, this._onRenderPrefix))),
+                    multiline ? this._renderTextArea() : this._renderInput(),
+                    iconProps && react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Icon__WEBPACK_IMPORTED_MODULE_8__.Icon, (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({ className: classNames.icon }, iconProps)),
+                    hasRevealButton && (
+                    // Explicitly set type="button" since the default button type within a form is "submit"
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { "aria-label": revealPasswordAriaLabel, className: classNames.revealButton, onClick: this._onRevealButtonClick, "aria-pressed": !!isRevealingPassword, type: "button" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: classNames.revealSpan },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Icon__WEBPACK_IMPORTED_MODULE_8__.Icon, { className: classNames.revealIcon, iconName: isRevealingPassword ? HIDE_ICON_NAME : REVEAL_ICON_NAME })))),
+                    (suffix !== undefined || this.props.onRenderSuffix) && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: classNames.suffix, id: this._suffixId }, onRenderSuffix(this.props, this._onRenderSuffix))))),
+            this._isDescriptionAvailable && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { id: this._descriptionId },
+                onRenderDescription(this.props, this._onRenderDescription),
+                errorMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { role: "alert" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Utilities__WEBPACK_IMPORTED_MODULE_9__.DelayedRender, null, this._renderErrorMessage())))))));
+    };
+    /**
+     * Sets focus on the text field
+     */
+    TextFieldBase.prototype.focus = function () {
+        if (this._textElement.current) {
+            this._textElement.current.focus();
+        }
+    };
+    /**
+     * Blurs the text field.
+     */
+    TextFieldBase.prototype.blur = function () {
+        if (this._textElement.current) {
+            this._textElement.current.blur();
+        }
+    };
+    /**
+     * Selects the text field
+     */
+    TextFieldBase.prototype.select = function () {
+        if (this._textElement.current) {
+            this._textElement.current.select();
+        }
+    };
+    /**
+     * Sets the selection start of the text field to a specified value
+     */
+    TextFieldBase.prototype.setSelectionStart = function (value) {
+        if (this._textElement.current) {
+            this._textElement.current.selectionStart = value;
+        }
+    };
+    /**
+     * Sets the selection end of the text field to a specified value
+     */
+    TextFieldBase.prototype.setSelectionEnd = function (value) {
+        if (this._textElement.current) {
+            this._textElement.current.selectionEnd = value;
+        }
+    };
+    Object.defineProperty(TextFieldBase.prototype, "selectionStart", {
+        /**
+         * Gets the selection start of the text field
+         */
+        get: function () {
+            return this._textElement.current ? this._textElement.current.selectionStart : -1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TextFieldBase.prototype, "selectionEnd", {
+        /**
+         * Gets the selection end of the text field
+         */
+        get: function () {
+            return this._textElement.current ? this._textElement.current.selectionEnd : -1;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Sets the start and end positions of a selection in a text field.
+     * @param start - Index of the start of the selection.
+     * @param end - Index of the end of the selection.
+     */
+    TextFieldBase.prototype.setSelectionRange = function (start, end) {
+        if (this._textElement.current) {
+            this._textElement.current.setSelectionRange(start, end);
+        }
+    };
+    TextFieldBase.prototype._warnControlledUsage = function (prevProps) {
+        // Show warnings if props are being used in an invalid way
+        (0,_Utilities__WEBPACK_IMPORTED_MODULE_10__.warnControlledUsage)({
+            componentId: this._id,
+            componentName: COMPONENT_NAME,
+            props: this.props,
+            oldProps: prevProps,
+            valueProp: 'value',
+            defaultValueProp: 'defaultValue',
+            onChangeProp: 'onChange',
+            readOnlyProp: 'readOnly',
+        });
+        if (this.props.value === null && !this._hasWarnedNullValue) {
+            this._hasWarnedNullValue = true;
+            (0,_Utilities__WEBPACK_IMPORTED_MODULE_11__.warn)("Warning: 'value' prop on '" + COMPONENT_NAME + "' should not be null. Consider using an " +
+                'empty string to clear the component or undefined to indicate an uncontrolled component.');
+        }
+    };
+    Object.defineProperty(TextFieldBase.prototype, "_id", {
+        /** Returns `props.id` if available, or a fallback if not. */
+        get: function () {
+            return this.props.id || this._fallbackId;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TextFieldBase.prototype, "_isControlled", {
+        get: function () {
+            return (0,_Utilities__WEBPACK_IMPORTED_MODULE_12__.isControlled)(this.props, 'value');
+        },
+        enumerable: false,
+        configurable: true
+    });
+    TextFieldBase.prototype._onRenderPrefix = function (props) {
+        var prefix = props.prefix;
+        return react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { paddingBottom: '1px' } }, prefix);
+    };
+    TextFieldBase.prototype._onRenderSuffix = function (props) {
+        var suffix = props.suffix;
+        return react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { paddingBottom: '1px' } }, suffix);
+    };
+    Object.defineProperty(TextFieldBase.prototype, "_errorMessage", {
+        /**
+         * Current error message from either `props.errorMessage` or the result of `props.onGetErrorMessage`.
+         *
+         * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
+         * - If we have done the validation and there is validation error, errorMessage is the validation error message.
+         */
+        get: function () {
+            var _a = this.props.errorMessage, errorMessage = _a === void 0 ? this.state.errorMessage : _a;
+            return errorMessage || '';
+        },
+        enumerable: false,
+        configurable: true
+    });
+    /**
+     * Renders error message based on the type of the message.
+     *
+     * - If error message is string, it will render using the built in styles.
+     * - If error message is an element, user has full control over how it's rendered.
+     */
+    TextFieldBase.prototype._renderErrorMessage = function () {
+        var errorMessage = this._errorMessage;
+        return errorMessage ? (typeof errorMessage === 'string' ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: this._classNames.errorMessage },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { "data-automation-id": "error-message" }, errorMessage))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: this._classNames.errorMessage, "data-automation-id": "error-message" }, errorMessage))) : null;
+    };
+    Object.defineProperty(TextFieldBase.prototype, "_isDescriptionAvailable", {
+        /**
+         * If a custom description render function is supplied then treat description as always available.
+         * Otherwise defer to the presence of description or error message text.
+         */
+        get: function () {
+            var props = this.props;
+            return !!(props.onRenderDescription || props.description || this._errorMessage);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    TextFieldBase.prototype._renderTextArea = function () {
+        var _a = this.props.invalid, invalid = _a === void 0 ? !!this._errorMessage : _a;
+        var textAreaProps = (0,_Utilities__WEBPACK_IMPORTED_MODULE_13__.getNativeProps)(this.props, _Utilities__WEBPACK_IMPORTED_MODULE_13__.textAreaProperties, ['defaultValue']);
+        var ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({ id: this._id }, textAreaProps, { ref: this._textElement, value: this.value || '', onInput: this._onInputChange, onChange: this._onInputChange, className: this._classNames.field, "aria-labelledby": ariaLabelledBy, "aria-describedby": this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'], "aria-invalid": invalid, "aria-label": this.props.ariaLabel, readOnly: this.props.readOnly, onFocus: this._onFocus, onBlur: this._onBlur })));
+    };
+    TextFieldBase.prototype._renderInput = function () {
+        var _a = this.props, ariaLabel = _a.ariaLabel, _b = _a.invalid, invalid = _b === void 0 ? !!this._errorMessage : _b, onRenderPrefix = _a.onRenderPrefix, onRenderSuffix = _a.onRenderSuffix, prefix = _a.prefix, suffix = _a.suffix, _c = _a.type, type = _c === void 0 ? 'text' : _c, label = _a.label;
+        // build aria-labelledby list from label, prefix, and suffix
+        var labelIds = [];
+        label && labelIds.push(this._labelId);
+        (prefix !== undefined || onRenderPrefix) && labelIds.push(this._prefixId);
+        (suffix !== undefined || onRenderSuffix) && labelIds.push(this._suffixId);
+        var inputProps = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({ type: this.state.isRevealingPassword ? 'text' : type, id: this._id }, (0,_Utilities__WEBPACK_IMPORTED_MODULE_13__.getNativeProps)(this.props, _Utilities__WEBPACK_IMPORTED_MODULE_13__.inputProperties, ['defaultValue', 'type'])), { 'aria-labelledby': this.props['aria-labelledby'] || (labelIds.length > 0 ? labelIds.join(' ') : undefined), ref: this._textElement, value: this.value || '', onInput: this._onInputChange, onChange: this._onInputChange, className: this._classNames.field, 'aria-label': ariaLabel, 'aria-describedby': this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'], 'aria-invalid': invalid, onFocus: this._onFocus, onBlur: this._onBlur });
+        var defaultRender = function (updatedInputProps) {
+            return react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, updatedInputProps));
+        };
+        var onRenderInput = this.props.onRenderInput || defaultRender;
+        return onRenderInput(inputProps, defaultRender);
+    };
+    TextFieldBase.prototype._validate = function (value) {
+        var _this = this;
+        // In case _validate is called again while validation promise is executing
+        if (this._latestValidateValue === value && _shouldValidateAllChanges(this.props)) {
+            return;
+        }
+        this._latestValidateValue = value;
+        var onGetErrorMessage = this.props.onGetErrorMessage;
+        var result = onGetErrorMessage && onGetErrorMessage(value || '');
+        if (result !== undefined) {
+            if (typeof result === 'string' || !('then' in result)) {
+                this.setState({ errorMessage: result });
+                this._notifyAfterValidate(value, result);
+            }
+            else {
+                var currentValidation_1 = ++this._lastValidation;
+                result.then(function (errorMessage) {
+                    if (currentValidation_1 === _this._lastValidation) {
+                        _this.setState({ errorMessage: errorMessage });
+                    }
+                    _this._notifyAfterValidate(value, errorMessage);
+                });
+            }
+        }
+        else {
+            this._notifyAfterValidate(value, '');
+        }
+    };
+    TextFieldBase.prototype._notifyAfterValidate = function (value, errorMessage) {
+        if (value === this.value && this.props.onNotifyValidationResult) {
+            this.props.onNotifyValidationResult(errorMessage, value);
+        }
+    };
+    TextFieldBase.prototype._adjustInputHeight = function () {
+        if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
+            var textField = this._textElement.current;
+            textField.style.height = '';
+            textField.style.height = textField.scrollHeight + 'px';
+        }
+    };
+    TextFieldBase.defaultProps = {
+        resizable: true,
+        deferredValidationTime: 200,
+        validateOnLoad: true,
+    };
+    return TextFieldBase;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component));
+
+/** Get the value from the given state and props (converting from number to string if needed) */
+function _getValue(props, state) {
+    var _a = props.value, value = _a === void 0 ? state.uncontrolledValue : _a;
+    if (typeof value === 'number') {
+        // not allowed per typings, but happens anyway
+        return String(value);
+    }
+    return value;
+}
+/**
+ * If `validateOnFocusIn` or `validateOnFocusOut` is true, validation should run **only** on that event.
+ * Otherwise, validation should run on every change.
+ */
+function _shouldValidateAllChanges(props) {
+    return !(props.validateOnFocusIn || props.validateOnFocusOut);
+}
+// Only calculate this once across all TextFields, since will stay the same
+var __browserNeedsRevealButton;
+function _browserNeedsRevealButton() {
+    if (typeof __browserNeedsRevealButton !== 'boolean') {
+        var win = (0,_Utilities__WEBPACK_IMPORTED_MODULE_14__.getWindow)();
+        if (win === null || win === void 0 ? void 0 : win.navigator) {
+            // Edge, Chromium Edge
+            var isEdge = /Edg/.test(win.navigator.userAgent || '');
+            __browserNeedsRevealButton = !((0,_Utilities__WEBPACK_IMPORTED_MODULE_15__.isIE11)() || isEdge);
+        }
+        else {
+            __browserNeedsRevealButton = true;
+        }
+    }
+    return __browserNeedsRevealButton;
+}
+//# sourceMappingURL=TextField.base.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@fluentui/react/lib/components/TextField/TextField.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@fluentui/react/lib/components/TextField/TextField.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TextField": function() { return /* binding */ TextField; }
+/* harmony export */ });
+/* harmony import */ var _Utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Utilities */ "./node_modules/@fluentui/utilities/lib/styled.js");
+/* harmony import */ var _TextField_base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextField.base */ "./node_modules/@fluentui/react/lib/components/TextField/TextField.base.js");
+/* harmony import */ var _TextField_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TextField.styles */ "./node_modules/@fluentui/react/lib/components/TextField/TextField.styles.js");
+
+
+
+var TextField = (0,_Utilities__WEBPACK_IMPORTED_MODULE_0__.styled)(_TextField_base__WEBPACK_IMPORTED_MODULE_1__.TextFieldBase, _TextField_styles__WEBPACK_IMPORTED_MODULE_2__.getStyles, undefined, {
+    scope: 'TextField',
+});
+//# sourceMappingURL=TextField.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@fluentui/react/lib/components/TextField/TextField.styles.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@fluentui/react/lib/components/TextField/TextField.styles.js ***!
+  \***********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getStyles": function() { return /* binding */ getStyles; }
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _Styling__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Styling */ "./node_modules/@fluentui/style-utilities/lib/index.js");
+
+
+var globalClassNames = {
+    root: 'ms-TextField',
+    description: 'ms-TextField-description',
+    errorMessage: 'ms-TextField-errorMessage',
+    field: 'ms-TextField-field',
+    fieldGroup: 'ms-TextField-fieldGroup',
+    prefix: 'ms-TextField-prefix',
+    suffix: 'ms-TextField-suffix',
+    wrapper: 'ms-TextField-wrapper',
+    revealButton: 'ms-TextField-reveal',
+    multiline: 'ms-TextField--multiline',
+    borderless: 'ms-TextField--borderless',
+    underlined: 'ms-TextField--underlined',
+    unresizable: 'ms-TextField--unresizable',
+    required: 'is-required',
+    disabled: 'is-disabled',
+    active: 'is-active',
+};
+function getLabelStyles(props) {
+    var underlined = props.underlined, disabled = props.disabled, focused = props.focused, theme = props.theme;
+    var palette = theme.palette, fonts = theme.fonts;
+    return function () {
+        var _a;
+        return ({
+            root: [
+                underlined &&
+                    disabled && {
+                    color: palette.neutralTertiary,
+                },
+                underlined && {
+                    fontSize: fonts.medium.fontSize,
+                    marginRight: 8,
+                    paddingLeft: 12,
+                    paddingRight: 0,
+                    lineHeight: '22px',
+                    height: 32,
+                },
+                underlined &&
+                    focused && {
+                    selectors: (_a = {},
+                        _a[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                            height: 31, // -1px to prevent jumpiness in HC with the increased border-width to 2px
+                        },
+                        _a),
+                },
+            ],
+        });
+    };
+}
+function getStyles(props) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+    var theme = props.theme, className = props.className, disabled = props.disabled, focused = props.focused, required = props.required, multiline = props.multiline, hasLabel = props.hasLabel, borderless = props.borderless, underlined = props.underlined, hasIcon = props.hasIcon, resizable = props.resizable, hasErrorMessage = props.hasErrorMessage, inputClassName = props.inputClassName, autoAdjustHeight = props.autoAdjustHeight, hasRevealButton = props.hasRevealButton;
+    var semanticColors = theme.semanticColors, effects = theme.effects, fonts = theme.fonts;
+    var classNames = (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getGlobalClassNames)(globalClassNames, theme);
+    var fieldPrefixSuffix = {
+        // Suffix/Prefix are not editable so the disabled slot perfectly fits.
+        background: semanticColors.disabledBackground,
+        color: !disabled ? semanticColors.inputPlaceholderText : semanticColors.disabledText,
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 10px',
+        lineHeight: 1,
+        whiteSpace: 'nowrap',
+        flexShrink: 0,
+        selectors: (_a = {},
+            _a[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                background: 'Window',
+                color: disabled ? 'GrayText' : 'WindowText',
+            },
+            _a),
+    };
+    // placeholder style constants
+    var placeholderStyles = [
+        {
+            color: semanticColors.inputPlaceholderText,
+            opacity: 1,
+            selectors: (_b = {},
+                _b[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                    color: 'GrayText',
+                },
+                _b),
+        },
+    ];
+    var disabledPlaceholderStyles = {
+        color: semanticColors.disabledText,
+        selectors: (_c = {},
+            _c[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                color: 'GrayText',
+            },
+            _c),
+    };
+    return {
+        root: [
+            classNames.root,
+            fonts.medium,
+            required && classNames.required,
+            disabled && classNames.disabled,
+            focused && classNames.active,
+            multiline && classNames.multiline,
+            borderless && classNames.borderless,
+            underlined && classNames.underlined,
+            _Styling__WEBPACK_IMPORTED_MODULE_0__.normalize,
+            {
+                position: 'relative',
+            },
+            className,
+        ],
+        wrapper: [
+            classNames.wrapper,
+            underlined && [
+                {
+                    display: 'flex',
+                    borderBottom: "1px solid " + (!hasErrorMessage ? semanticColors.inputBorder : semanticColors.errorText),
+                    width: '100%',
+                },
+                disabled && {
+                    borderBottomColor: semanticColors.disabledBackground,
+                    selectors: (_d = {},
+                        _d[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)({ borderColor: 'GrayText' }, (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getHighContrastNoAdjustStyle)()),
+                        _d),
+                },
+                !disabled && {
+                    selectors: {
+                        ':hover': {
+                            borderBottomColor: !hasErrorMessage ? semanticColors.inputBorderHovered : semanticColors.errorText,
+                            selectors: (_e = {},
+                                _e[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)({ borderBottomColor: 'Highlight' }, (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getHighContrastNoAdjustStyle)()),
+                                _e),
+                        },
+                    },
+                },
+                focused && [
+                    {
+                        position: 'relative',
+                    },
+                    (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getInputFocusStyle)(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, 0, 'borderBottom'),
+                ],
+            ],
+        ],
+        fieldGroup: [
+            classNames.fieldGroup,
+            _Styling__WEBPACK_IMPORTED_MODULE_0__.normalize,
+            {
+                border: "1px solid " + semanticColors.inputBorder,
+                borderRadius: effects.roundedCorner2,
+                background: semanticColors.inputBackground,
+                cursor: 'text',
+                height: 32,
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'stretch',
+                position: 'relative',
+            },
+            multiline && {
+                minHeight: '60px',
+                height: 'auto',
+                display: 'flex',
+            },
+            !focused &&
+                !disabled && {
+                selectors: {
+                    ':hover': {
+                        borderColor: semanticColors.inputBorderHovered,
+                        selectors: (_f = {},
+                            _f[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)({ borderColor: 'Highlight' }, (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getHighContrastNoAdjustStyle)()),
+                            _f),
+                    },
+                },
+            },
+            focused &&
+                !underlined &&
+                (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getInputFocusStyle)(!hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText, effects.roundedCorner2),
+            disabled && {
+                borderColor: semanticColors.disabledBackground,
+                selectors: (_g = {},
+                    _g[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__assign)({ borderColor: 'GrayText' }, (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getHighContrastNoAdjustStyle)()),
+                    _g),
+                cursor: 'default',
+            },
+            borderless && {
+                border: 'none',
+            },
+            borderless &&
+                focused && {
+                border: 'none',
+                selectors: {
+                    ':after': {
+                        border: 'none',
+                    },
+                },
+            },
+            underlined && {
+                flex: '1 1 0px',
+                border: 'none',
+                textAlign: 'left',
+            },
+            underlined &&
+                disabled && {
+                backgroundColor: 'transparent',
+            },
+            hasErrorMessage &&
+                !underlined && {
+                borderColor: semanticColors.errorText,
+                selectors: {
+                    '&:hover': {
+                        borderColor: semanticColors.errorText,
+                    },
+                },
+            },
+            !hasLabel &&
+                required && {
+                selectors: (_h = {
+                        ':before': {
+                            content: "'*'",
+                            color: semanticColors.errorText,
+                            position: 'absolute',
+                            top: -5,
+                            right: -10,
+                        }
+                    },
+                    _h[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                        selectors: {
+                            ':before': {
+                                color: 'WindowText',
+                                right: -14, // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                            },
+                        },
+                    },
+                    _h),
+            },
+        ],
+        field: [
+            fonts.medium,
+            classNames.field,
+            _Styling__WEBPACK_IMPORTED_MODULE_0__.normalize,
+            {
+                borderRadius: 0,
+                border: 'none',
+                background: 'none',
+                backgroundColor: 'transparent',
+                color: semanticColors.inputText,
+                padding: '0 8px',
+                width: '100%',
+                minWidth: 0,
+                textOverflow: 'ellipsis',
+                outline: 0,
+                selectors: (_j = {
+                        '&:active, &:focus, &:hover': { outline: 0 },
+                        '::-ms-clear': {
+                            display: 'none',
+                        }
+                    },
+                    _j[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                        background: 'Window',
+                        color: disabled ? 'GrayText' : 'WindowText',
+                    },
+                    _j),
+            },
+            (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getPlaceholderStyles)(placeholderStyles),
+            multiline &&
+                !resizable && [
+                classNames.unresizable,
+                {
+                    resize: 'none',
+                },
+            ],
+            multiline && {
+                minHeight: 'inherit',
+                lineHeight: 17,
+                flexGrow: 1,
+                paddingTop: 6,
+                paddingBottom: 6,
+                overflow: 'auto',
+                width: '100%',
+            },
+            multiline &&
+                autoAdjustHeight && {
+                overflow: 'hidden',
+            },
+            hasIcon &&
+                !hasRevealButton && {
+                paddingRight: 24,
+            },
+            multiline &&
+                hasIcon && {
+                paddingRight: 40,
+            },
+            disabled && [
+                {
+                    backgroundColor: semanticColors.disabledBackground,
+                    color: semanticColors.disabledText,
+                    borderColor: semanticColors.disabledBackground,
+                },
+                (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getPlaceholderStyles)(disabledPlaceholderStyles),
+            ],
+            underlined && {
+                textAlign: 'left',
+            },
+            focused &&
+                !borderless && {
+                selectors: (_k = {},
+                    _k[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                        paddingLeft: 11,
+                        paddingRight: 11,
+                    },
+                    _k),
+            },
+            focused &&
+                multiline &&
+                !borderless && {
+                selectors: (_l = {},
+                    _l[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                        paddingTop: 4, // take into consideration the 2px increased border-width (not when borderless).
+                    },
+                    _l),
+            },
+            inputClassName,
+        ],
+        icon: [
+            multiline && {
+                paddingRight: 24,
+                alignItems: 'flex-end',
+            },
+            {
+                pointerEvents: 'none',
+                position: 'absolute',
+                bottom: 6,
+                right: 8,
+                top: 'auto',
+                fontSize: _Styling__WEBPACK_IMPORTED_MODULE_0__.IconFontSizes.medium,
+                lineHeight: 18,
+            },
+            disabled && {
+                color: semanticColors.disabledText,
+            },
+        ],
+        description: [
+            classNames.description,
+            {
+                color: semanticColors.bodySubtext,
+                fontSize: fonts.xSmall.fontSize,
+            },
+        ],
+        errorMessage: [
+            classNames.errorMessage,
+            _Styling__WEBPACK_IMPORTED_MODULE_0__.AnimationClassNames.slideDownIn20,
+            fonts.small,
+            {
+                color: semanticColors.errorText,
+                margin: 0,
+                paddingTop: 5,
+                display: 'flex',
+                alignItems: 'center',
+            },
+        ],
+        prefix: [classNames.prefix, fieldPrefixSuffix],
+        suffix: [classNames.suffix, fieldPrefixSuffix],
+        revealButton: [
+            classNames.revealButton,
+            'ms-Button',
+            'ms-Button--icon',
+            (0,_Styling__WEBPACK_IMPORTED_MODULE_0__.getFocusStyle)(theme, { inset: 1 }),
+            {
+                height: 30,
+                width: 32,
+                border: 'none',
+                padding: '0px 4px',
+                backgroundColor: 'transparent',
+                color: semanticColors.link,
+                selectors: {
+                    ':hover': {
+                        outline: 0,
+                        color: semanticColors.primaryButtonBackgroundHovered,
+                        backgroundColor: semanticColors.buttonBackgroundHovered,
+                        selectors: (_m = {},
+                            _m[_Styling__WEBPACK_IMPORTED_MODULE_0__.HighContrastSelector] = {
+                                borderColor: 'Highlight',
+                                color: 'Highlight',
+                            },
+                            _m),
+                    },
+                    ':focus': { outline: 0 },
+                },
+            },
+            hasIcon && {
+                marginRight: 28,
+            },
+        ],
+        revealSpan: {
+            display: 'flex',
+            height: '100%',
+            alignItems: 'center',
+        },
+        revealIcon: {
+            margin: '0px 4px',
+            pointerEvents: 'none',
+            bottom: 6,
+            right: 8,
+            top: 'auto',
+            fontSize: _Styling__WEBPACK_IMPORTED_MODULE_0__.IconFontSizes.medium,
+            lineHeight: 18,
+        },
+        subComponentStyles: {
+            label: getLabelStyles(props),
+        },
+    };
+}
+//# sourceMappingURL=TextField.styles.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@fluentui/react/lib/utilities/MenuContext/MenuContext.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@fluentui/react/lib/utilities/MenuContext/MenuContext.js ***!
@@ -19436,6 +20379,31 @@ function hoistStatics(source, dest) {
     return dest;
 }
 //# sourceMappingURL=hoistStatics.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@fluentui/utilities/lib/ie11Detector.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@fluentui/utilities/lib/ie11Detector.js ***!
+  \**************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isIE11": function() { return /* binding */ isIE11; }
+/* harmony export */ });
+/* harmony import */ var _dom_getWindow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom/getWindow */ "./node_modules/@fluentui/utilities/lib/dom/getWindow.js");
+
+var isIE11 = function () {
+    var _a;
+    var win = (0,_dom_getWindow__WEBPACK_IMPORTED_MODULE_0__.getWindow)();
+    if (!((_a = win === null || win === void 0 ? void 0 : win.navigator) === null || _a === void 0 ? void 0 : _a.userAgent)) {
+        return false;
+    }
+    return win.navigator.userAgent.indexOf('rv:11.0') > -1;
+};
+//# sourceMappingURL=ie11Detector.js.map
 
 /***/ }),
 
@@ -50282,10 +51250,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* binding */ App; }
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fluentui/react */ "./node_modules/@fluentui/react/lib/components/Button/DefaultButton/DefaultButton.js");
-/* harmony import */ var _fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react/lib/Button */ "./node_modules/@fluentui/react/lib/components/Button/PrimaryButton/PrimaryButton.js");
+/* harmony import */ var _fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react/lib/Button */ "./node_modules/@fluentui/react/lib/components/Button/PrimaryButton/PrimaryButton.js");
+/* harmony import */ var _fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react/lib/TextField */ "./node_modules/@fluentui/react/lib/components/TextField/TextField.js");
 /* harmony import */ var _fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react/lib/Label */ "./node_modules/@fluentui/react/lib/components/Label/Label.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./src/taskpane/components/Header.js");
 /* harmony import */ var _HeroList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HeroList */ "./src/taskpane/components/HeroList.js");
@@ -50306,6 +51275,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -50346,18 +51316,23 @@ var App = /*#__PURE__*/function (_React$Component) {
       }, _callee);
     })));
     _defineProperty(_assertThisInitialized(_this), "insertText", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var teste;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              Office.context.document.setSelectedDataAsync("Hello Fluent UI React!", {
+              // eslint-disable-next-line no-undef
+              teste = $("#teste").val();
+              Office.context.document.setSelectedDataAsync(teste,
+              //"Hello Fluent UI React!",
+              {
                 coercionType: Office.CoercionType.Text
               }, function (result) {
                 if (result.status === Office.AsyncResultStatus.Failed) {
                   console.error(result.error.message);
                 }
               });
-            case 1:
+            case 2:
             case "end":
               return _context2.stop();
           }
@@ -50373,16 +51348,19 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var myLanguage = Office.context.displayLanguage;
+      var UIText;
+      UIText = UIStrings.getLocaleStrings(myLanguage);
       this.setState({
         listItems: [{
           icon: "Ribbon",
-          primaryText: this.UIText.Certificado
+          primaryText: UIText.Certificado
         }, {
           icon: "QRCode",
-          primaryText: this.UIText.QRCode
+          primaryText: UIText.QRCode
         }, {
           icon: "ImageSearch",
-          primaryText: this.UIText.Imagens
+          primaryText: UIText.Imagens
         }],
         disabled: false
       });
@@ -50429,7 +51407,11 @@ var App = /*#__PURE__*/function (_React$Component) {
           iconName: "ChevronRight"
         },
         onClick: this.click
-      }, "Inserir"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_5__.Label, null, UIText.InsertText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
+      }, "Inserir"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Label__WEBPACK_IMPORTED_MODULE_5__.Label, null, UIText.InsertText), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_TextField__WEBPACK_IMPORTED_MODULE_6__.TextField, {
+        id: "teste",
+        label: "URL para QR Code",
+        prefix: "https://"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react_lib_Button__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, {
         "data-automation-id": "test",
         text: UIText.BotaoTexto,
         onClick: this.insertText
@@ -50440,8 +51422,8 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 App.propTypes = {
-  title: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().string),
-  isOfficeInitialized: (prop_types__WEBPACK_IMPORTED_MODULE_7___default().bool)
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().string),
+  isOfficeInitialized: (prop_types__WEBPACK_IMPORTED_MODULE_8___default().bool)
 };
 var UIStrings = function () {
   "use strict";
@@ -50451,7 +51433,7 @@ var UIStrings = function () {
   UIStrings.EN = {
     Greeting: "Welcome",
     Introduction: "Discover what you can do here!",
-    InsertText: "Click the button to insert text.",
+    InsertText: "Click the button to insert a QR Code.",
     BotaoTexto: "Insert text...",
     Certificado: "Create certificates.",
     QRCode: "Include custom QRCodes.",
@@ -50461,7 +51443,7 @@ var UIStrings = function () {
   UIStrings.BR = {
     Greeting: "Benvindo",
     Introduction: "Descubra o que pode fazer aqui!",
-    InsertText: "Clique o botão para inserir um texto.",
+    InsertText: "Clique o botão para inserir um QR Code.",
     BotaoTexto: "Inserir texto...",
     Certificado: "Crie certificados.",
     QRCode: "Inclua QRCodes customizados.",
