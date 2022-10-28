@@ -1,8 +1,5 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. -->
-<!-- See LICENSE in the project root for license information -->
-
-<!doctype html>
-<html lang="en" data-framework="javascript">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -13,19 +10,73 @@
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
 
+    <!-- Fluent UI Web Component -->
+    <!-- <script type="module" src="https://unpkg.com/@fluentui/web-components"></script> -->
+    <script type="module" src="9197d567d01c17976e68.js"></script>
+
     <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
     <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
 
-    <!-- JQuery -->
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.js"></script>
-
     <!-- Template styles -->
-    <link href="c5f0b0f217eedd0ab115.css" rel="stylesheet" type="text/css" />
+    <link href="d3aab6339292d2e25e41.css" rel="stylesheet" type="text/css" />
+<script defer src="polyfill.js"></script><script defer src="taskpane.js"></script></head>
 
-<script defer src="polyfill.js"></script><script defer src="vendor.js"></script><script defer src="taskpane.js"></script></head>
-
-<body class="ms-font-m ms-Fabric">
-    <div id="container"></div>
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="assets/logo-filled.png" alt="AlbumMed Task Pane Add-in" title="AlbumMed Add-in" />
+        <h1 class="ms-font-su" id="Greeting"></h1>
+    </header>
+    <main id="app-body" class="ms-welcome__main">
+        <h2 class="ms-font-xl" id="Introduction"></h2>
+        <ul class="ms-List ms-welcome__features">
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--QRCode ms-font-xl"></i>
+                <span class="ms-font-m" id="QRCode">QRCode</span> <i class="ms-Icon ms-Icon--Add ms-font-m ms-font-greenDark" onclick="trocaDiv('qrdiv')"></i>
+            </li>
+            <li class="ms-ListItem" id="qrdiv">
+              <div>
+                <span class="ms-font-l" id="Texto1"></span>
+                <fluent-text-field appearance="outline" placeholder="https://" id="Site1" type="url">Site1</fluent-text-field>
+                <fluent-button appearance="accent" id="Botao1">QR Code</fluent-button>
+                <br /><br />
+              </div>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--ImageSearch ms-font-xl"></i>
+                <span class="ms-font-m" id="Imagens">Imagens</span> <i class="ms-Icon ms-Icon--Add ms-font-m ms-font-greenDark" onclick="trocaDiv('imdiv')"></i>
+            </li>
+            <li class="ms-ListItem" id="imdiv">
+                <div>
+                  <span class="ms-font-l" id="Texto2"></span>
+                  <fluent-text-field appearance="outline" id="Site2" type="text"></fluent-text-field>
+                  <fluent-button appearance="accent" id="Botao2">Imagem</fluent-button>
+                  <iframe title="Busca de Imagem" src="https://album.med.br/addin/imagem.php"></iframe>
+                  <br /><br />
+                </div>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
+                <span class="ms-font-m" id="Certificado">Certificado</span> <i class="ms-Icon ms-Icon--Add ms-font-m ms-font-greenDark" onclick="trocaDiv('cediv')"></i>
+            </li>
+            <li class="ms-ListItem" id="cediv">
+                <div>
+                  <span class="ms-font-l" id="Texto3"></span>
+                  <br /><br />
+                </div>
+            </li>
+        </ul>
+    </main>
 </body>
+
+<script>
+function trocaDiv(obj) {
+  div = document.getElementById(obj);
+  if (div.style.display == 'inline') {
+      div.style.display = 'none';
+  } else {
+      div.style.display = 'inline';
+  }
+}
+</script>
 
 </html>

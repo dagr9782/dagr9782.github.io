@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>204d5c8e-c636-4b89-ae84-30a12e7f928e</Id>
+  <Id>d31504d1-17e6-4f4c-ab71-de0033f28382</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>AlbumMed</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -10,7 +10,7 @@
   </Description>
   <IconUrl DefaultValue="https://dagr9782.github.io/albummed-addin/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://dagr9782.github.io/albummed-addin/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://album.med.br/addin/help.php"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://album.med.br</AppDomain>
   </AppDomains>
