@@ -10,7 +10,7 @@
   </Description>
   <IconUrl DefaultValue="https://dagr9782.github.io/albummed-addin/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://dagr9782.github.io/albummed-addin/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <SupportUrl DefaultValue="https://album.med.br/addin/help.php"/>
   <AppDomains>
     <AppDomain>https://album.med.br</AppDomain>
   </AppDomains>
