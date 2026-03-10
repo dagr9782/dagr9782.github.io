@@ -1,0 +1,6084 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detailed Report</title>
+    <META charset="utf-8">
+<style type='text/css'>
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 12px;
+	color: #4a4949;
+	width: 100%;
+}
+
+/* Containers */
+
+#mainContainer {
+	padding: 18px;
+	min-width: 750px;
+}
+
+	#mainContainer .title {
+		font-size: 18px;
+		font-weight: bold;
+		color: #08286b;
+		margin-bottom: 13px;
+	}
+
+/* Links 
+a:link, a:visited, .standardlink{
+    color: #007c95; 
+    text-decoration: none;
+    font-size: 12px;
+}
+
+a:hover, .standardlink:hover{
+    text-decoration: underline;
+}
+
+a:active,a.active{
+    color: #fff;
+    text-decoration: underline;
+    background: #007c95;
+}
+*/
+/* Form Elements */
+
+
+form label {
+	padding: 3px;
+}
+
+.checkbox, .radio {
+	width: 19px;
+	height: 25px;
+	padding: 0 5px 0 0;
+	background: url(images/checkbox_standard.png) no-repeat;
+	display: block;
+	clear: left;
+	float: left;
+}
+
+.checkbox_action {
+	width: 19px;
+	height: 25px;
+	padding: 0 5px 0 0;
+	background: url(images/checkbox_action.png) no-repeat;
+	display: block;
+	clear: left;
+	float: left;
+}
+
+.radio {
+	background: url(radio.png) no-repeat;
+}
+
+.select {
+	position: absolute;
+	width: 158px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	height: 21px;
+	padding: 0 24px 0 8px;
+	color: #fff;
+	font: 12px/21px arial,sans-serif;
+	background: url(select.png) no-repeat;
+	overflow: hidden;
+}
+
+
+/* buttons */
+
+.btnPrimary {
+	color: #fff;
+	background: #e37f1c;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	height: 25px;
+	/*behavior: url(style/PIE.htc);*/
+	display: inline;
+	border: none;
+	cursor: pointer;
+}
+
+	.btnPrimary a:link, .btnPrimary a:visited, .btnPrimary a:hover, .btnPrimary a:active {
+		text-decoration: none;
+		color: #fff;
+		background: none;
+	}
+
+.btnSecondary {
+	color: #fff;
+	background: #008da8;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	height: 25px;
+	padding: 5px 12px;
+	/*behavior: url(style/PIE.htc);*/
+	display: inline;
+	border: none;
+	cursor: pointer;
+}
+
+	.btnSecondary a:link, .btnSecondary a:visited, .btnSecondary a:hover, .btnSecondary a:active {
+		text-decoration: none;
+		color: #fff;
+		background: none;
+	}
+
+.btnDisable {
+	color: #fff;
+	background: Silver;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	height: 25px;
+	padding: 5px 12px;
+	/*behavior: url(style/PIE.htc);*/
+	display: inline;
+	border: none;
+	cursor: pointer;
+}
+
+	.btnDisable a:link, .btnDisable a:visited, .btnDisable a:hover, .btnDisable a:active {
+		text-decoration: none;
+		color: Gray;
+		background: none;
+	}
+
+
+
+
+
+/* HTML Standard Select
+select {
+    color: #fff;
+    background: #008da8;
+    border: 1px solid #dbdbdb;
+    border-radius:5px;
+    -moz-border-radius:5px;
+}
+
+select option:hover{
+    background: #fff;
+    color: #3c3c3c;
+    cursor: pointer;
+} */
+/* Dropdown Menus */
+
+/* for positioning and z-index */
+.dropdown {
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 115px;
+}
+
+/* Action Dropdown */
+.dropdownAction {
+	color: #fff;
+	background: #008da8;
+	border: 1px solid #dbdbdb;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	/*behavior: url(style/PIE.htc);*/
+	display: inline-block;
+	/* IE7 fix */
+	zoom: 1;
+	*display: inline;
+}
+
+	.dropdownAction div.text {
+		float: left;
+		padding: 4px 2px 4px 10px;
+		cursor: default;
+		max-width: 75px;
+		max-height: 12px;
+		overflow: hidden;
+	}
+
+	.dropdownAction div.arrow {
+		float: right;
+		background: url(images/dropdownArrow.gif) 6px 10px no-repeat;
+		cursor: pointer;
+		width: 22px;
+		height: 24px;
+		border-left: 1px solid #fff;
+	}
+
+	.dropdownAction div.items {
+		border-top: 1px solid #fff;
+		display: none;
+		max-height: 200px;
+		overflow-y: auto;
+	}
+
+		.dropdownAction div.items div {
+			padding: 3px 10px;
+		}
+
+			.dropdownAction div.items div:hover, .dropdownAction div.items div.selected {
+				background: #fff;
+				color: #3c3c3c;
+				cursor: pointer;
+			}
+
+div.items div.selected {
+	background: #efefef !important;
+}
+
+/* Standard Dropdown */
+.dropdownStandard {
+	color: #3c3c3c;
+	background: #fff;
+	border: 1px solid #dbdbdb;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	display: inline-block;
+	/* IE7 fix */
+	zoom: 1;
+	*display: inline;
+	/*behavior: url(style/PIE.htc);*/
+}
+
+	.dropdownStandard div.text {
+		float: left;
+		padding: 4px 0px 4px 10px;
+		cursor: default;
+		max-width: 75px;
+		max-height: 12px;
+		overflow: hidden;
+	}
+
+	.dropdownStandard div.arrow {
+		float: right;
+		/*background: url(images/dropdownArrow_black.gif) 6px 10px no-repeat;*/
+		background: url(<%=WebResource("KPMGLINKCommonModules.images.dropdownArrow_black.gif")%>)6px 10px no-repeat;
+		cursor: pointer;
+		width: 22px;
+		height: 24px;
+		border-left: 1px solid #3c3c3c;
+	}
+
+	.dropdownStandard div.items {
+		border-top: 1px solid #3c3c3c;
+		display: none;
+		overflow-y: auto;
+	}
+
+		.dropdownStandard div.items div {
+			padding: 3px 10px;
+		}
+
+			.dropdownStandard div.items div:hover, .dropdownStandard div.items div.selected {
+				background-color: #dbdbdb;
+				color: #3c3c3c;
+				cursor: pointer;
+			}
+
+/* drop down day colors */
+.dropdown .work {
+	background-image: url(images/days/workBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .non-work {
+	background-image: url(images/days/non-workBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .sick {
+	background-image: url(images/days/sickBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .holiday {
+	background-image: url(images/days/holidayBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .conf {
+	background-image: url(images/days/confBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .vacation {
+	background-image: url(images/days/vacationBG.gif);
+	background-repeat: no-repeat;
+	background-position: 4px 4px;
+	padding-left: 25px !important;
+}
+
+.dropdown .items .work {
+	background-image: url(images/days/workBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .items .non-work {
+	background-image: url(images/days/non-workBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .items .sick {
+	background-image: url(images/days/sickBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .items .holiday {
+	background-image: url(images/days/holidayBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .items .conf {
+	background-image: url(images/days/confBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .items .vacation {
+	background-image: url(images/days/vacationBG.gif);
+	background-repeat: no-repeat;
+	background-position: 98% 3px;
+	padding-left: 10px !important;
+}
+
+.dropdown .days div:hover {
+	background-color: none !important;
+}
+/* Forms */
+form input[type=text] {
+	color: #3c3c3c;
+	line-height: 14px\0 !important;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	/* ----HACKS FOR IE7-IE8--- */
+	padding-top: 3px\0;
+	padding-bottom: 0px\0;
+	display: visible\0;
+}
+
+form input[type=text],
+form input[type=password] {
+	color: #3c3c3c;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+form label {
+	padding: 3px;
+}
+/* Helpers */
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.hide {
+	display: none;
+}
+
+.half {
+	width: 50%;
+}
+
+/* Clear fix for IE and other older browsers */
+.clear:before,
+.clear:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clear:after {
+	clear: both;
+}
+
+/* For IE 6/7 only */
+.clear {
+	*zoom: 1;
+}
+
+/* normal clear */
+.cf {
+	clear: both;
+}
+
+/* IE ignores margins after a float */
+.breaker {
+	height: 35px;
+}
+
+.breakerSmall {
+	height: 7px;
+}
+
+/* log div */
+#log {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-top: 1px solid #333;
+	padding: 10px;
+}
+
+/* Test Layout Styles */
+.floatNav {
+	width: 100%;
+	height: 30px;
+	background: #fff;
+	border-bottom: 1px solid #333;
+}
+
+.modalBackground {
+	background-color: Gray;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+
+.lblbold {
+	font-size: 16px;
+	font-weight: bold;
+	color: #00535e;
+	padding-left: 20px;
+	display: inline;
+}
+
+.lblboldNopadding {
+	font-size: 16px;
+	font-weight: bold;
+	color: #00535e;
+	display: inline;
+	vertical-align: bottom;
+	padding-top: 2px;
+}
+
+.lblmain {
+	font-size: 12px;
+	font-weight: normal;
+	padding-left: 20px;
+	display: inline;
+}
+
+.lbldatatext {
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: normal;
+	display: inline;
+}
+
+.ui-tooltip-gray {
+	background-color: #ccd1dd !important;
+	border-color: #ccd1dd !important;
+	color: #3c3c3c !important;
+}
+
+	.ui-tooltip-gray .ui-tooltip-titlebar {
+		background-color: #ccd1dd !important;
+	}
+
+	.ui-tooltip-gray .ui-state-default .ui-tooltip-icon {
+		background-position: -2px 0 !important;
+	}
+
+.agreement {
+	border: 1px solid #bebebe;
+	padding: 10px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	margin-top: 15px;
+	height: 400px;
+	overflow: auto;
+}
+
+.agreement_small {
+	border: 1px solid #bebebe;
+	padding: 10px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	margin-top: 15px;
+	height: 400px;
+	overflow: auto;
+}
+
+/* Font Awesome styles replaced with icon sprites. */
+[class^="icon-"], [class*=" icon-"] {background:url(<%=WebResource("KPMGLINKCommonModules.images.icons.icon-sprite.png")%>) no-repeat; display:inline-block !important;background-position:50px 50px;}
+[class^="icon-"]:before, [class*=" icon-"]:before {content: none!important;}
+
+.icon-info-sign {background-position:0 -122px;width:13px;height:13px;}
+.icon-info-sign-edge {background-position:0 -122px;width:13px;height:13px;}
+.icon-user {background-position:0 -275px;width:12px;height:13px;}
+.icon-bar-chart {background-position:0 -17px;width:15px;height:13px;}
+.icon-edit {background-position:0px -51px;width:12px;height:13px;}
+.icon-envelope-alt {background-position:0px -68px;width:18px;height:14px;}
+.icon-list-alt {background-position:0 -141px;width:18px;height:14px}
+.icon-adjust {background-position:0 0;width:12px;height:12px;}
+.icon-ok {background-position:0 -160px;width:12px;height:12px;}
+.icon-file-text {background-position:0 -88px;width:10px;height:12px;}
+.icon-file-text-alt {background-position:0 -105px;width:10px;height:12px;}
+.icon-refresh {background-position:0 -258px;width:12px;height:12px;}
+.icon-circle-blank {background-position:0 -35px;width:12px;height:12px;}
+.icon-plus-circle {background-position:0 -224px;width:13px;height:12px;}
+.icon-ok.owl-icon {background-position:0 -200px;width:19px;height:19px;}
+.icon-ttcog {background-position:0 -292px;width:13px;height:13px;}
+.icon-exclamation-sign {background-position:0 -310px;width:14px;height:14px;}
+.icon-minus-sign {background-position:0 -330px;width:12px;height:12px;}
+.icon-adjust.owl-icon {background-position:0 -348px;width:19px;height:20px;}
+.icon-circle-blank.owl-icon {background-position:0 -372px;width:19px;height:20px;}
+.icon-warning-sign {background-position:0 -397px; width:12px; height:12px;}
+.icon-reply {background-position:0 -413px; width:12px; height:12px;}
+.icon-remove {background-position:0 -430px; width:12px; height: 12px;}
+.icon-pencil {background-position:0 -447px; width:12px; height:12px;}
+.icon-plus {background-position:0 -465px; width:12px; height:12px;}
+.icon-sort-up {background-position:0 -480px; width:11px; height:7px;}
+.icon-sort-down {background-position:0 -495px; width:11px; height:7px;}
+.icon-edit-sign {background-position:0 -505px; width:12px;height:13px;}
+.icon-print {background-position:0 -522px;width:13px;height:12px;}
+.icon-minus-sign-alt {background-position:0 -538px; width:14px; height:14px;}
+.icon-link {background-position:0 -557px; width:13px; height:13px;}
+.xicon-eFile {background-position:0 -200px;width:19px;height:19px;}
+/* YOU ARE IN ---- link6_site.css ---*/
+
+#HeaderSpace {
+	height: 70px;
+}
+
+h2 {
+	line-height: 20px !important;
+}
+
+h3.dark {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 7px;
+	color: #000;
+}
+
+h4 {
+	font-family: inherit;
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 12px;
+	color: #000;
+}
+
+a {
+	color: #009dd5;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+	a:active, a:selected, a:visited {
+		border: none !important;
+		outline: none !important;
+	}
+
+	a:active, a:focus {
+		outline: none !important;
+	}
+
+	a:focus, a:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+#noCarousel {
+	height: 70px !important;
+	background-color: #9a9a9a;
+}
+
+.headerWrap {
+	width: 100%;
+	top: 0;
+	min-height: 70px;
+	background-color: #015397;
+	position: fixed;
+	z-index: 1000;
+}
+
+ul#mainMenu li a:active,
+ul#mainMenu li a:selected,
+ul#mainMenu li a:visited {
+	border: none;
+	outline: none;
+}
+
+ul#mainMenu li.disabled {
+	background-image: inherit !important;
+}
+
+ul#mainMenu li a.disabled {
+	pointer-events: none !important;
+}
+
+
+/* ----------- START Footer section --------------- */
+.copyright {
+	color: #717171;
+	margin-bottom: 0;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	display: block;
+	margin-bottom: 12px;
+	font-size: 10px;
+}
+
+#layout-footer {
+	background-color: #f1f5fb;
+	left: 0;
+	bottom: 0;
+	min-height: 57px;
+	border-top: 0;
+	box-shadow: inset 0 0 5px #acb7c5;
+	position: fixed;
+	padding: 0px;
+}
+
+#footer {
+	width: 100%;
+}
+
+footer {
+	padding: 0px;
+	background: #f1f5fb;
+	font-size: 10px;
+	color: #a4a4a4;
+	box-sizing: border-box;
+	vertical-align: top;
+	z-index: 1000;
+	position: fixed;
+	bottom: 0px;
+}
+
+.footerIE8 {
+	Width: 100%;
+	padding: 0px;
+	background: #f1f5fb;
+	font-size: 10px;
+	color: #a4a4a4;
+	box-sizing: border-box;
+	vertical-align: top;
+	z-index: 1000;
+	position: fixed;
+	bottom: 0px;
+	display: block;
+}
+
+footer, .push {
+	min-height: 57px !important;
+}
+/* ----------- END Footer section --------------- */
+
+.contentWidth {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 0 15px 0px 0px;
+}
+
+.left {
+	float: left;
+	margin: 0px 5px
+}
+
+.right {
+	float: right;
+}
+
+.rightAlign {
+	display: block;
+	margin-top: 5px;
+}
+
+.reviewCheckbox i {
+	font-size: 14px;
+	color: #009dd5;
+}
+
+/* =========== START Form elements =============== */
+#dvInterviewNotesWindow {
+	margin: 24px 12px 0px;
+}
+
+.tdReviewLaterTop {
+	height: 30px;
+	vertical-align: bottom;
+	padding-bottom: 10px;
+}
+
+.tdReviewLaterBottom {
+	height: 70px;
+	vertical-align: bottom;
+	float: right;
+}
+
+.questionnaire-med,
+.questionnaire-short,
+.questionnaire-long {
+	vertical-align: top;
+	display: inline-block;
+	padding: 15px 12px;
+	zoom: 1;
+	white-space: normal;
+}
+
+.questionnaire-med {
+	width: 400px;
+}
+
+.questionnaire-short {
+	width: 250px;
+}
+
+.questionnaire-long {
+	width: 500px;
+}
+
+.radioSet {
+	display: block;
+	float: left;
+	margin-right: 1px;
+	width: 70px;
+	height: auto;
+	overflow: hidden;
+	padding: left:12px;
+}
+
+.BulletList {
+	list-style-type: disc;
+}
+/* =========== END Form elements =============== */
+
+
+/* =========== START Widget/PORTAL element ===== */
+#portCont {
+	width: 1190px;
+	height: auto;
+	overflow: hidden;
+	margin: 18px;
+}
+
+.actionTable {
+	margin-top: 0px;
+}
+
+	.actionTable td {
+		font-size: 13px;
+	}
+
+.portContent {
+	width: 100%;
+	margin: 0px auto;
+	border: 1px solid #e7e7e7;
+}
+
+.p-Content span {
+	font-size: 13px;
+	line-height: 21px;
+	color: #1a78b6;
+}
+
+.portContent td {
+	padding-left: 6px;
+	padding-right: 0px;
+	line-height: 28px;
+	vertical-align: middle;
+	border-bottom: 1px solid #e7e7e7;
+	font-size: 13px;
+}
+
+.P-year {
+	color: #009dd5;
+	font-size: 21px;
+	vertical-align: middle;
+	border-right: 1px solid #e7e7e7;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+td .flagBox {
+	width: 50px;
+	border-right: 0px;
+	padding-right: 0px !important;
+}
+
+.flagBox img {
+	padding: 6px 0px 0px 6px;
+}
+
+.widget-reg, .widget-long {
+	float: left;
+	width: auto;
+	min-height: 305px;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 0 10px;
+	margin-top: 0px;
+	margin-right: 18px;
+	margin-bottom: 18px;
+	margin-left: 0px;
+}
+
+.widget-reg {
+	width: 370px;
+}
+
+.widget-long .imgStartNotSart {
+	display: block;
+	width: 117px;
+	height: 117px;
+	padding: 50px 0px 60px 65px;
+}
+
+.right .imgStartNotSart {
+	width: 116px;
+	height: 116px;
+	padding: 26px 25px 0px 23px;
+	display: block;
+}
+
+.widget-long {
+	width: 650px;
+}
+
+.widgetWrap {
+	margin: 0;
+	display: block;
+	/*background: #9a9a9a;
+    background: -moz-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#9a9a9a),color-stop(100%,#d0d0d0));
+    background: -webkit-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+    background: -o-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+    background: -ms-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+    background: linear-gradient(to bottom,#9a9a9a 0,#d0d0d0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9a9a9a',endColorstr='#d0d0d0',GradientType=0);*/
+	overflow: hidden;
+}
+
+#panelContainer {
+	display: block;
+	margin: 18px;
+	width: auto;
+	height: 100%;
+	overflow: hidden;
+	max-width: 1636px;
+}
+
+.widget-content-wrapper h1 {
+	font-size: 16px;
+	color: #002664;
+	text-align: left;
+}
+
+.widgetHeader {
+	border-bottom: 1px solid #e6e6e6;
+	margin: 5px;
+	padding: 2px 0px 4px;
+	margin-bottom: 5px;
+	height: auto;
+	width: 98%;
+	overflow: hidden;
+}
+
+	/* ---- Adding space to the Travel Summary Widget ---*/
+
+	.widgetHeader img .notStarted {
+		padding: 24px 12px 59px 63px;
+	}
+
+.widgeContent {
+	display: block;
+}
+
+/* ---- Adding space to the Travel Summary Widget ---*/
+
+.widgetBottom {
+	border-bottom: 1px solid #e6e6e6;
+	margin: 5px;
+	padding: 2px 0px 4px;
+	margin-bottom: 5px;
+	height: auto;
+	width: 98%;
+	overflow: hidden;
+}
+
+.innerDonutText {
+	left: 78px;
+	top: 98px;
+	width: auto;
+	height: auto;
+	/*margin-top: 15%; */
+	position: absolute;
+	z-index: 100;
+	background-color: transparent;
+}
+
+.innerDonutTextAssignments {
+	left: 1px;
+	top: 78px;
+	width: 170px;
+	height: 170px;
+	/*margin-top: 45%;*/
+	position: absolute;
+	z-index: 100;
+	background-color: transparent;
+}
+
+.innerDonutTextFonts {
+	text-align: center;
+	color: #005297;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: 600;
+}
+
+.donutAssignments {
+	width: 170px;
+	height: 170px;
+	float: right;
+	top: 1px;
+	left: 1px;
+}
+
+.donutTravelSummary {
+	width: 350px;
+	height: 230px;
+	float: left;
+	top: 1px;
+	left: 1px;
+}
+
+.columnChartTravelSummary {
+	width: 230px;
+	height: 200px;
+	float: right;
+	margin-right: 12px;
+}
+
+.positionRel {
+	position: relative;
+}
+
+.One_X_One .notifiWidget {
+	width: 635px !important;
+	padding: 0px;
+	margin-left: 5px;
+	min-height: 200px;
+}
+
+
+.left-10 {
+	float: left;
+	margin-left: 40px;
+}
+
+/*------------------ START - Here are the homepage Flag CSS entries ----------------------*/
+
+.widgetHeader .flag {
+	width: 48px;
+	height: 48px;
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+
+.CA {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.CA.png")%>) no-repeat left top;
+}
+
+.CL {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.Chile.png")%>) no-repeat left top;
+}
+
+.DE {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.Germany.png")%>) no-repeat left top;
+}
+
+.GR {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.Greece.png")%>) no-repeat left top;
+}
+
+.US {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.us.png")%>) no-repeat left top;
+}
+
+.NA {
+	background: transparent url(<%=WebResource("KPMGLINKCommonModules.images.flags.Namibia.png")%>) no-repeat left top;
+}
+
+/*------------------ END - Homepage Flag CSS entries ----------------------*/
+
+.pull-left {
+	text-align: left;
+	float: left;
+}
+
+.widgetTitle {
+	font-size: 16px;
+	color: #002664;
+	text-align: left;
+	font-weight: 600;
+}
+
+.widgetHeaderRule {
+	margin: .6em;
+	height: 23px;
+}
+
+#sidebar {
+	width: auto !important;
+	float: left;
+}
+
+#main-content {
+	width: 100%;
+	float: left;
+}
+
+
+/*----------------- Widget/PORTAL element -----------------*/
+
+#vSplit .pane-left {
+	position: fixed !important;
+}
+
+#vSplit {
+	min-height: 0px !important;
+}
+
+.k-splitter .k-splitbar-horizontal {
+    width: 8px !important;
+    color: #ccc;
+}
+
+.k-widget-content .listviewExt {
+	margin-left: 5px !important;
+}
+
+.k-splitbar-fixed {
+	position: fixed !important;
+    top: auto !important;
+    overflow:hidden !important; /* Bug: tax year selection causes change in splitter in DM */
+}
+
+/* ----START WIDGET CONTENT----------------------------------*/
+
+#adminmenu #reverse .widget-content {
+	height: auto;
+	width: auto;
+	overflow: visible;
+	float: left;
+	margin: 0px 0px;
+	display: block;
+}
+
+#adminmenu li.user ul li a:hover {
+	color: #fff;
+	text-shadow: 1px 1px #446d06 !important;
+	box-shadow: 0 0 0 1px #65a204 !important;
+	background: #72c407 !important;
+	background: -moz-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#72c407),color-stop(100%,#65a204)) !important;
+	background: -webkit-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -o-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -ms-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: linear-gradient(to bottom,#72c407 0,#65a204 100%) !important;
+}
+
+.wdgtCont {
+	float: left;
+}
+
+	.wdgtCont i {
+		display: block;
+		font-size: 13px;
+		width: 19px;
+		overflow: hidden;
+	}
+
+	.wdgtCont li {
+		display: block;
+		font-size: 11px;
+		width: auto;
+		overflow: hidden;
+		max-width: 177px;
+		text-overflow: ellipsis;
+	}
+/*-- Inner widget Boxes--*/
+.widget-content-wrapper h1 {
+	padding: 0px;
+	margin: -9px 0px 12px !important;
+}
+
+.listviewExt .textBox {
+	color: #494949;
+	width: 87%;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	word-wrap: break-word;
+	display: inline-block;
+	margin: 0px 0px 0px;
+}
+
+.widget-long .row .textBox {
+	width: 95% !important;
+}
+
+.listviewExt .row td {
+	font-size: 12px;
+	padding: 7px 0px 7px 5px;
+	vertical-align: middle;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+}
+
+.listviewExt .row:nth-child(odd) {
+	background-color: #F2F2F2;
+}
+
+.percenComplete_Large {
+	left: 1px;
+	top: 1px;
+	width: 170px;
+	height: 170px;
+	text-align: center;
+	color: #42a7ff;
+	margin-top: 42%;
+	position: absolute;
+	z-index: 1000;
+	background-color: transparent;
+	font-size: 1.75em;
+}
+
+.chartName {
+	width: 170px;
+	height: 170px;
+	float: right;
+	top: 1px;
+	left: 1px;
+	position: absolute;
+}
+
+.countryHeader {
+	float: left;
+	margin-left: 10px;
+}
+/*-- Inner widget Boxes--*/
+
+/* ----END WIDGET CONTENT----------------------------------*/
+
+
+/* ========== END UNIVERSAL KPMG LINK 6 =============== */
+
+
+/* ========== START BANNER SECTION =============== */
+#StatusSection {
+	position: fixed;
+	top: 60px;
+	width: 100%;
+	clear: both;
+	z-index: 2;
+}
+
+.statusComplete {
+	display: block;
+	margin: 5px 7px !important;
+	height: 24px;
+	width: auto;
+	font-size: 14px;
+	font-weight: 800;
+	color: #009dd5;
+	line-height: 15px
+}
+
+.statusCompleteRight {
+	display: block;
+	margin: 5px 7px !important;
+	height: 24px;
+	width: auto;
+	font-size: 14px;
+	font-weight: 800;
+	color: #009dd5;
+	line-height: 15px;
+	float: right;
+}
+
+#banner {
+	min-width: 300px;
+	font-size: 11px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	line-height: 12px;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	background-color: #e9e9e9;
+}
+
+#bannerCont-left, #bannerCont-right, .assignSect {
+	padding: 7px;
+	height: 26px;
+	overflow: hidden;
+	margin: 0px;
+}
+
+#bannerCont-left {
+	float: left;
+	width: auto;
+}
+
+#bannerCont-right {
+	float: right;
+	min-width: 315px;
+	padding-left: 0px;
+	background-color: #fff;
+}
+
+.resourceSect {
+	float: right;
+	width: 380px;
+}
+
+	.resourceSect select {
+		height: 28px;
+		width: 200px;
+		border: 1px solid #d7d7d7;
+		margin-top: 6px;
+	}
+
+.assignSect {
+	background: #e9e9e9 url("../images/topShadowBrak.png") no-repeat right top;
+	float: right;
+	width: 275px;
+}
+
+	.assignSect label {
+		float: left;
+		margin: 9px 5px;
+	}
+
+.banner-left {
+	float: left;
+	min-width: 100%;
+	width: auto;
+	overflow: hidden;
+	margin: auto 0px;
+	height: 24px;
+}
+
+.banner-right {
+	float: left;
+	width: 100%;
+	margin: auto 0px;
+}
+
+.flagBox-left, .entry,
+.ToolTipBox, .bracket,
+.countryBox, .flagBox-right,
+.dateBox {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	margin: 0px auto;
+	padding: 0px 0px 0px 0px;
+	vertical-align: middle;
+}
+
+	.flagBox-left img {
+		width: 32px;
+		height: 32px;
+	}
+
+.nameBox {
+	min-width: 120px;
+	padding: 0px 12px 0px 40px;
+	border-right: 1px solid grey;
+	min-width: 100px;
+	max-width: 300px;
+}
+
+.nameBoxLeft {
+	min-width: 120px;
+	padding: 0px 12px 0px 40px;
+	border-right: 1px solid grey;
+	min-width: 100px;
+	max-width: 300px;
+	float: left;
+	line-height: 22px !important;
+}
+
+.ToolTipBox {
+	padding: 5px;
+}
+
+	.ToolTipBox i {
+		color: #009dd5;
+		font-size: 14px;
+	}
+
+.info {
+	min-width: 60px;
+	max-width: 300px;
+}
+
+.dateBox {
+	min-width: 60px;
+	padding: 0px 12px 0px 0px;
+	border-right: 1px solid grey;
+	max-width: 300px;
+}
+
+.selectbox {
+	float: left;
+	width: 130px;
+	border-radius: 3px;
+	margin-left: 2px;
+}
+
+.countryBox {
+	float: right;
+	min-width: 50px;
+	padding: 0px 40px 0px 12px;
+	max-width: 300px;
+	text-align: right;
+}
+
+/* --- START FLAG SECTION ----*/
+.usa {
+	background: transparent url('../images/us-Flag.png') no-repeat left top;
+}
+
+.usa-right {
+	background: transparent url('../images/us-Flag.png') no-repeat right top;
+}
+
+.germ {
+	background: transparent url('../images/Germ-Flag.png') no-repeat left top;
+}
+
+.germ-right {
+	background: transparent url('../images/Germ-Flag.png') no-repeat right top;
+}
+
+.swiss {
+	background: transparent url('../images/swiss-Flag.png') no-repeat left top;
+}
+/* --- END FLAG SECTION ----*/
+
+/* ============ END BANNER SECTION ======================= */
+
+
+/* ============ START ICON SECTION ======================= */
+
+/*------------------ START - Here are the homepage statue Icon CSS entries ------*/
+
+
+
+
+
+/*------------------ END - Homepage statue Icon CSS entries ----------------------*/
+
+.resultsImg i.icon-ok {
+	color: #8ebc58 !important;
+}
+
+.row .flagBox-left i.icon-exclamation-sign,
+.row .flagBox-left i.icon-list-alt {
+	padding-left: 1px;
+}
+
+.listviewExt td i.icon-exclamation-sign {
+	float: left;
+	display: block;
+	width: 17px;
+	height: 18px;
+	line-height: 19px;
+	font-size: 18px;
+	color: #FF0000;
+}
+
+.wdgtCont i.icon-exclamation-sign {
+	float: left;
+	display: block;
+	width: 17px;
+	height: 18px;
+	font-size: 14px;
+	line-height: 19px;
+	padding-left: 7px;
+	margin-top: 0px;
+	color: #FF0000;
+}
+
+.kpmg-widget-icon {
+	height: 16px;
+	width: 16px;
+	font-size: 18px;
+	float: right;
+	cursor: pointer;
+	margin-right: 0px;
+}
+
+.portContent td i.icon-exclamation-sign {
+	font-size: 18px;
+	line-height: 18px;
+	padding-top: 11px !important;
+	color: #FF0000;
+}
+
+.portContent td i.icon-adjust {
+	font-size: 18px;
+	line-height: 18px;
+	padding-bottom: 11px !important;
+	padding-top: 0px !important;
+	padding-top: 11px;
+	color: #1a78b6;
+	margin-top: 6px;
+}
+
+.portContent td i.icon-ok {
+	font-size: 18px;
+	line-height: 21px;
+	padding-top: 10px !important;
+}
+
+.portContent td .icon-circle-blank {
+	font-size: 18px;
+	line-height: 21px;
+	padding-top: 10px !important;
+	color: #1688c3;
+}
+
+.editor-label-long i.icon-info-sign,
+.editor-label-medium i.icon-info-sign,
+.editor-label-Short i.icon-info-sign {
+	font-size: 14px;
+	color: #009dd5;
+	margin-left: 4px;
+}
+
+[class^="icon-"], [class*=" icon-icon-edt"],
+.icon-edt {
+	font-size: 15px;
+	margin-left: 0px;
+	cursor: pointer;
+	color: #1a78b6;
+}
+
+.icon-plus-circle:before {
+	content: "\f055";
+}
+
+i.icon-plus-circle {
+	color: #1a78b6;
+}
+
+.icon-eFile {
+	background-image: url(<%=WebResource("KPMGLINKCommonModules.images.icons.eFilieLogoSmall.png")%>) !important;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 26px;
+	height: 17px;
+	display: block;
+}
+
+.divWarningBox .icon-warning-sign {
+	font-size: 18px !important;
+	color: red !important;
+}
+
+.redMandatoryIcon {
+	padding-left: 2px;
+	padding-right: 2px;
+	color: #CC1F23 !important;
+	font-size: 14px !important;
+	position: relative;
+}
+
+.iconBox a {
+	text-decoration: none !important;
+}
+
+.DependentsTable .icon-ok, .icon-minus-sign, .icon-sort-up, .icon-sort-down {
+	font-size: 14px;
+	float: none;
+	display: inline;
+}
+
+.DependentsTable tr td.iconBox, .DependentsTable th.iconBox {
+	vertical-align: top !important;
+	text-align: center !important;
+	white-space: nowrap;
+}
+
+.icon-comment-alt {
+	font-size: 12px;
+	padding: 1px 0px 0px 2px;
+}
+
+/* ============ END ICON SECTION ============================ */
+
+
+/* ============ START CAROUSEL SECTION ====================== */
+#carousel_inner {
+	overflow: hidden;
+	background: #9a9a9a;
+	background: -moz-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#9a9a9a),color-stop(100%,#d0d0d0));
+	background: -webkit-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+	background: -o-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+	background: -ms-linear-gradient(top,#9a9a9a 0,#d0d0d0 100%);
+	background: linear-gradient(to bottom,#9a9a9a 0,#d0d0d0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9a9a9a',endColorstr='#d0d0d0',GradientType=0);
+	overflow: hidden;
+	position: relative;
+	height: 66px;
+}
+
+.navContainer {
+	width: 100%;
+	position: absolute;
+	margin: 0px;
+	overflow: hidden;
+	z-index: 1000;
+	top: 40px;
+	border-bottom: 1px solid grey;
+}
+
+.results {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	max-width: 128px;
+	display: block;
+	float: left;
+	line-height: 11px;
+}
+
+	.results a {
+		width: auto;
+		height: 32px;
+		overflow: hidden;
+		max-width: 120px;
+		display: block;
+		float: left;
+		font-size: 12px;
+		font-weight: 600;
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+		vertical-align: middle;
+		margin: 8px 2px;
+	}
+
+.car-num, .car-entry {
+	display: block;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+}
+
+.car-num, .car-entry {
+	float: left;
+}
+
+.car-num {
+	font-size: 41px !important;
+	color: #c4c4c4;
+	height: 33px;
+	margin-right: 0px;
+	line-height: 0.70em;
+	font-weight: 100;
+	margin-top: 2px;
+}
+
+.car-entry {
+	margin: 8px auto;
+	min-width: 71%;
+	text-align: center;
+}
+
+.resultsImg {
+	float: right
+}
+
+	.resultsImg i {
+		float: right;
+		margin-top: 9px;
+		font-size: 18px;
+		color: #1a78b6;
+	}
+
+.active {
+	/*height:66px !important;
+    width:240px !important;	
+    margin:5px 0px !important;*/
+}
+
+/* ================= END CAROUSEL SECTION ============================== */
+
+/* ================= START SIDE NAV SECTION ============================== */
+.navText {
+	display: block;
+	float: left;
+	border-bottom-style: solid;
+	border-bottom-color: #c3c3c3 !important;
+	line-height: 11px;
+	font-size: 11px;
+	font-weight: 600;
+	text-decoration: none;
+	zoom: 1;
+	border-right: 0 solid #fff;
+}
+
+#parentLI .navIcon_sideNavItemRepeater {
+	display: block;
+	float: left;
+	width: auto;
+	margin: auto 0px;
+	padding-top: 3px;
+}
+
+#parentLI .leftNav_sideNavItemRepeater {
+	display: block;
+	width: 185px;
+	height: auto;
+	text-overflow: clip;
+	padding-top: 3px;
+	line-height: 14px;
+	margin-left: 15px;
+}
+
+#parentLI .navIcon_sideNavSubItemRepeater {
+	display: inline-block;
+	min-width: 21px;
+	min-height: 14px;
+	margin-left: -1px;
+}
+
+.navStatus {
+	display: block;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	font-size: 14px;
+	padding: 5px 5px 12px 5px;
+}
+
+.k-item i {
+	font-size: 18px;
+	vertical-align: middle;
+	margin-right: 7px;
+	line-height: 15px;
+}
+
+#parentLI .k-link .k-i-arrow-s, #parentLI .k-link .k-i-arrow-n {
+	top: calc(50% - 8px);
+}
+
+#childLI .navIcon_sideNavSubItemRepeater {
+	margin-left: 10px;
+}
+
+/* ================= END SIDE NAV SECTION ============================== */
+
+ul.entryForm li:nth-child(2n+1) {
+	background-color: #f2f2f2;
+}
+
+ul.entryForm li {
+	padding: 7px 0px 7px 12px;
+	margin: 12px 0px;
+	vertical-align: middle;
+}
+
+.editor-label, .editor-field {
+	display: inline-block;
+	padding-bottom: 0px;
+	zoom: 1;
+}
+
+.editor-label-medium {
+	width: 200px;
+	vertical-align: top;
+	display: inline-block;
+	padding-bottom: 0px;
+	zoom: 1;
+	white-space: normal;
+}
+
+/* ================= END FORM SECTION ============================== */
+
+
+
+
+
+/* ================= START MAIN NAV SECTION (overrides) ============================== */
+/*Admin Menu*/
+#adminmenu li.administration a {
+	background-image: url(<%=WebResource("KPMGLINKCommonModules.images.icons.administration_cog.png")%>) !important;
+}
+
+/*This for IE 8*/
+#adminmenu li.questionHelp a {
+	background-image: url(<%=WebResource("KPMGLINKCommonModules.images.icons.helpQuestion.png")%>) !important;
+}
+
+#adminmenu li.user:hover ul {
+	display: block !important
+}
+
+.transitionAlertHelp {
+	display: inline-block;
+	width: 15px;
+	height: 16px;
+	background-image: url(<%=WebResource("KPMGLINKCommonModules.images.icons.helpQuestion.png")%>) !important;
+	background-repeat: no-repeat !important;
+}
+
+/* ================= END MAIN NAV SECTION (overrides) ============================== */
+
+.myLinkUrl {
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: inherit;
+	/*border: 1px solid #d7d7d7;*/
+	border-radius: 2px !important;
+	background-color: #fff !important;
+	color: #595959;
+	margin-top: 5px !important;
+	min-width: 200px !important;
+}
+
+#carousel_ul li {
+	filter: alpha(opacity=75);
+	opacity: 0.75;
+}
+
+	#carousel_ul li.active {
+		filter: alpha(opacity=100);
+		opacity: 1;
+	}
+
+		#carousel_ul li.active a {
+			font-size: 14px;
+		}
+
+		#carousel_ul li.active .results, #carousel_ul li.active .results a {
+			max-width: 150px;
+		}
+
+
+
+/* ---------- START GRID FORMAT STYLES ---------- */
+.ssoTable {
+	width: 100%;
+	border-spacing: 5px;
+}
+
+	.ssoTable td {
+		padding: 10px;
+	}
+
+.FormTable {
+	width: 100%;
+}
+
+	.FormTable div {
+		font-size: 12px;
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+		/*max-width: 480px;*/
+	}
+
+    .FormTable .longInput,
+    .FormTable .medInput,
+    .FormTable .shortInput {
+        font-size: inherit;
+        border: 1px solid rgba(0, 0, 0, 0.25) !important;
+        line-height: 14px !important;
+        text-indent: 5px;
+        margin: 0;
+        padding: 1px 0 3px 2px;
+        box-shadow: none !important;
+        float: left;
+    }
+
+textarea {
+	font-size: 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	border: 1px solid #d7d7d7 !important;
+	margin: 0;
+	padding: 2px 0;
+	box-shadow: none !important;
+	float: left;
+	width: 230px;
+}
+
+.FormTable .longInput {
+	width: 230px;
+}
+
+.FormTable .medInput {
+	width: 150px;
+}
+
+.FormTable .shortInput {
+	width: 70px;
+}
+
+div .redAsterisk {
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #CC1F23 !important;
+	font-size: 16px !important;
+	position: relative;
+	top: 4px;
+}
+
+.FormTable tr {
+	width: 100%;
+	vertical-align: middle;
+}
+
+	.FormTable tr:nth-child(2n+1) {
+		background-color: #f2f2f2;
+	}
+
+.FormTable .first {
+	width: auto;
+	max-width: 200px;
+	margin-right: 12px;
+	padding: 8px 12px 8px 24px;
+	height: auto;
+	line-height: 12px;
+	overflow: hidden;
+}
+
+.FormTable .last {
+	padding-right: 13px;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+}
+
+.FormTable th {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 9px;
+}
+
+.FormTable td {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 9px;
+	max-width: 480px;
+}
+
+.FormTable .title {
+	color: #494949;
+	font-size: 13px;
+	font-weight: 600;
+	background-color: #fff;
+}
+
+.FormTable .heading {
+	background-color: #e9e9e9;
+	font-weight: 600;
+}
+
+.docKeyTable {
+	border: 2px solid black;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 13px;
+}
+
+.docTble {
+    border: 1px solid #d7d7d7;
+    word-wrap:break-word;
+}
+
+	.docTble td {
+		border-bottom: 1px solid #d7d7d7;
+		border-right: 1px solid #d7d7d7;
+	}
+
+.docCaption {
+	border: solid;
+	border-color: #d7d7d7;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	background-color: rgb(242, 242, 242);
+	font-weight: bold;
+	font-style: italic;
+	padding: 9px;
+}
+
+.docKeyLabel {
+	font-family: Arial !important;
+}
+
+#tblIntQuestions td {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 3px 9px;
+}
+
+.InfoTable {
+	margin: 14px 0px 23px 0px;
+}
+
+	.InfoTable .yearSelector {
+		margin-bottom: 21px;
+	}
+
+	.InfoTable textarea {
+		width: 247px;
+		margin-right: 12px;
+	}
+
+	.InfoTable td {
+		padding: 2px;
+	}
+
+	.InfoTable .docSelector td {
+		margin-bottom: 21px;
+		padding: 5px;
+	}
+
+.uploadTable td {
+	padding: 2px;
+}
+
+.ReviewTable {
+	margin: 14px 0px 0px 0px;
+}
+/* ---------- END GRID FORMAT STYLES ---------- */
+
+
+.form-actions {
+	margin-bottom: 10px;
+}
+
+.rightPaneAdjustment {
+	left: 305px;
+	position: fixed !important;
+	overflow: auto !important;
+	padding-bottom: 0px !important;
+	padding-top: 0px !important;
+	margin: 30px 0px 24px 12px;
+}
+
+.leftPaneAdjustment {
+	left: 0px;
+	margin-top: 0px !important;
+	/*position: absolute;*/
+	overflow: auto !important;
+	width: 300px;
+}
+
+.vSplitAdjustment {
+	top: -15px;
+	overflow: hidden !important;
+	position: absolute;
+	border: none !important;
+}
+
+.form-actions input {
+	display: inline-block
+}
+
+
+.outlineBorder {
+	border: 1px solid #e4e4e4;
+}
+
+.form-actions input {
+	margin-left: 10px
+}
+
+	.form-actions input:first-of-type {
+		margin-left: 0
+	}
+
+h2 {
+	font-size: 14px !important;
+	color: #68a900;
+	font-weight: 600;
+	margin: 6px 0
+}
+
+*:focus {
+	outline: 0;
+}
+
+
+.form-actions ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline
+}
+
+/* ----------START BUTTON SECTION------------------------*/
+
+li > .link-button, .field-row li > .link-button {
+	margin-top: 8px;
+	margin-bottom: 5px
+}
+
+.form-actions li > .link-button {
+	margin-top: 8px
+}
+
+	.form-actions li > .link-button ~ .button {
+		margin-top: 0
+	}
+
+li > .link-button {
+	margin: 0 !important
+}
+
+.admin-buttons li, .pull-right li, .buttons-right li, ul.buttons-right li {
+	list-style: none;
+	display: inline;
+	padding-left: 9px;
+}
+
+.button-group, .form-actions {
+	background: #fff;
+	background: -moz-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#fcfcfc),color-stop(100%,#eee));
+	background: -webkit-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -o-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -ms-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: linear-gradient(to bottom,#fcfcfc 0,#eee 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc',endColorstr='#eeeeee',GradientType=0);
+	border-radius: 4px;
+	height: 33px;
+	border: 1px solid #ddd;
+	padding: 11px 15px;
+	margin-top: 10px;
+	text-align: right
+}
+
+button,
+.button,
+input.button,
+input[type="button"],
+input[type="submit"] {
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	border: 1px solid white !important;
+	border-radius: 2px;
+	line-height: 19px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0;
+	padding: 4px 13px;
+	vertical-align: baseline;
+	width: auto;
+	height: auto;
+	font-weight: 500;
+	text-indent: 0;
+	color: #fff;
+	text-shadow: 1px 1px #446d06 !important;
+	box-shadow: 0 0 0 1px #65a204 !important;
+	background: #72c407 !important;
+	background: -moz-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#72c407),color-stop(100%,#65a204)) !important;
+	background: -webkit-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -o-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -ms-linear-gradient(top,#72c407 0,#65a204 100%);
+	background: linear-gradient(to bottom,#72c407 0,#65a204 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#72c407',endColorstr='#65a204',GradientType=0);
+}
+
+	button:hover,
+	.button:hover,
+	input.button:hover,
+	input[type="button"]:hover,
+	input[type="submit"]:hover {
+		background: #65a204 !important;
+		filter: none !important;
+	}
+
+
+.blue-button {
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	border: 1px solid white !important;
+	border-radius: 2px;
+	line-height: 19px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0;
+	padding: 4px 13px;
+	vertical-align: baseline;
+	width: auto;
+	height: auto;
+	font-weight: 500;
+	text-indent: 0;
+	color: #fff;
+	text-shadow: 1px 1px #00264e;
+	box-shadow: 0 0 0 1px #215FA3;
+	border-collapse: separate;
+	background: #1688c3;
+	background: -moz-linear-gradient(top,# 1688c3 0, #215fa3 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,# 1688c3),color-stop(100 %, #215fa3));
+	background: -webkit-linear-gradient(top,# 1688c3 0, #215fa3 100%);
+	background: -o-linear-gradient(top,# 1688c3 0, #215fa3 100%);
+	background: -ms-linear-gradient(top,# 1688c3 0, #215fa3 100%);
+	background: linear-gradient(to bottom,# 1688c3 0, #215fa3 100%);
+	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr= '#1688c3', endColorstr = '#215fa3', GradientType = 0)*/
+	filter: none !important;
+}
+
+	.blue-button: hover {
+		background: #215FA3;
+		text-decoration: none;
+	}
+
+	.blue-button: active {
+		background: #1688c3 !important;
+		text-decoration: none;
+	}
+
+.btn-primary, .green-button {
+	color: #fff;
+	text-shadow: 1px 1px #446d06 !important;
+	box-shadow: 0 0 0 1px #65a204 !important;
+	background: #72c407 !important;
+	background: -moz-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#72c407),color-stop(100%,#65a204)) !important;
+	background: -webkit-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -o-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: -ms-linear-gradient(top,#72c407 0,#65a204 100%) !important;
+	background: linear-gradient(to bottom,#72c407 0,#65a204 100%) !important;
+	border-collapse: separate !important;
+	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#72c407',endColorstr='#65a204',GradientType=0)!important*/
+}
+
+	.btn-primary:hover, .green-button:hover {
+		background: #65a204 !important;
+		text-decoration: none;
+	}
+
+	.btn-primary:active, .green-button:active {
+		background: #72c407 !important;
+		text-decoration: none;
+	}
+
+.btn-primary, .orange-button {
+	color: #FFFFFF;
+	text-shadow: 1px 1px #446d06 !important;
+	box-shadow: 0 0 0 1px #e28613 !important;
+	background: #ffaf4b !important; /* Old browsers */
+	background: -moz-linear-gradient(top, #FFC540 0%, #ff920a 100%) !important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffaf4b), color-stop(100%,#ff920a)) !important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #FFC540 0%,#ff920a 100%) !important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #FFC540 0%,#ff920a 100%) !important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #FFC540 0%,#ff920a 100%) !important; /* IE10+ */
+	background: linear-gradient(to bottom, #FFC540 0%,#ff920a 100%) !important; /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFD348', endColorstr='#ff920a',GradientType=0 ); /* IE6-9 */
+}
+
+	.btn-primary, .orange-button:hover {
+		background: #de630c !important;
+		text-decoration: none;
+	}
+
+		.btn-primary:active, .orange-button:active {
+			background: #ee7118 !important;
+			text-decoration: none;
+		}
+
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+.button[disabled=disabled],
+.inactive-button {
+	color: #bbb !important;
+	box-shadow: 0 0 0 1px #bbb !important;
+	background: #e9e9e9 !important;
+	text-shadow: 0 0 #e9e9e9 !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false) !important;
+}
+
+	.button[disabled=disabled]:hover,
+	.k-button.k-state-disabled:hover,
+	.inactive-button:hover,
+	.k-button.k-state-disabled:focus,
+	.inactive-button:focus {
+		cursor: default;
+		background: #e9e9e9 !important;
+		box-shadow: 0 0 0 1px #bbb !important;
+		outline: 0 !important;
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	}
+/* ----------END BUTTON SECTION------------------------*/
+
+.watermark-text {
+	color: Gray !important;
+}
+
+.disabledLink {
+	color: Gray !important;
+}
+
+/*  Kendo style  */
+
+/* Travel Summary Pop UP */
+.m-window {
+	min-width: 90px;
+	min-height: 50px;
+	width: 700px;
+	height: 520px;
+	display: block;
+	top: 52.5px;
+	position: fixed;
+	z-index: 10003;
+}
+
+#barchartFull {
+	width: 680px;
+	margin: 0px auto;
+}
+
+.chartHeader {
+	display: block;
+	width: 680px;
+	height: auto;
+	overflow: hidden;
+	margin: 12px auto;
+	padding: 0px;
+}
+
+.chartCountry, .chartDays {
+	float: left;
+	color: #999;
+	padding: 2px 0px 2px 7px;
+	border-left: 1px solid #fff;
+	font-size: 14px;
+	border-bottom: 1px solid #e9e9e9;
+}
+
+.chartCountry {
+	width: 108px;
+}
+
+.chartDays {
+	width: 550px;
+}
+
+.headingTaxPortlet {
+	font-size: 15px !important;
+	margin-top: 14px;
+}
+
+.wrapAdminTitle {
+	float: left;
+	margin-left: 10px;
+}
+
+.autoFillWidth {
+	width: 100%;
+}
+
+	.autoFillWidth a {
+		font-size: 11px !important;
+	}
+
+.midAlignMSGTax {
+	margin-top: 122px;
+}
+
+.midAlignMSGCompliance {
+	margin-top: 92px;
+}
+
+.liWrap {
+	width: auto;
+	height: auto !important;
+	word-wrap: break-word;
+	overflow: hidden;
+	/*white-space: nowrap;*/
+	margin-bottom: 3px;
+}
+
+
+#content .k-widget.pane-height {
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 7px;
+	height: auto !important;
+	overflow: hidden !important;
+	background-color: transparent !important;
+	/* -- Fixing the Left Panel top space -- */
+	margin-top: 40px;
+}
+
+#content .pane-left {
+	padding-left: 0px;
+	padding-right: 0px;
+	z-index: 999;
+	margin-top: 20px;
+	background-color: #fff !important;
+}
+
+#content .pane-right {
+	margin: 30px 20px 20px 20px;
+	padding: 0px 15px 100px 20px;
+}
+
+.async-loading {
+	background: #fff url(images/ajax-loader.gif) center center no-repeat;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 9999;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+.owl-wrapper {
+	height: 53px !important;
+}
+
+div.k-window-content {
+	position: relative;
+	z-index: -1;
+	height: 98%;
+	overflow: hidden;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0px;
+}
+
+.lt-ie9 div.k-window {
+	color: #9A9A9A;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 0 15px -4px #222;
+	box-shadow: 0 0 15px -4px #222;
+	border-color: rgba(0,0,0,0.45) !important;
+	border-width: 10px !important;
+	border-style: solid !important;
+	background-clip: padding-box;
+	background-color: #ffffff;
+}
+
+/* =========== START Styles from organizerhome.aspx =============== */
+fieldset {
+	width: 500px;
+}
+
+.progresspanel {
+	background-color: RED;
+	color: White;
+	top: 1px;
+	color: white;
+	position: absolute;
+	right: 16px;
+	z-index: 999;
+}
+/* Added for Multi Language dropdown-ML*/
+.LanguageDropdown {
+	font-size: 11px;
+	font-family: arial, sans-serif;
+	color: #333333;
+}
+/* =========== END Styles from organizerhome.aspx ================ */
+
+
+
+/* Added for Multi Language dropdown-ML*/
+.LanguageDropdown {
+	font-size: 11px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	color: #333333;
+}
+/*--------TAKEN FORM Login.aspx --------------*/
+#loginPage td {
+	font-size: 8pt;
+	color: #000000;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+#loginPage p .small {
+	font-size: 7pt;
+	color: #777777;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+/*--------TAKEN FORM Login.aspx --------------*/
+
+/*----------OrganizerMain.aspx----------------*/
+#divContent fieldset {
+	width: 500px;
+}
+
+#divContent .tbl {
+}
+
+	#divContent .tbl tr {
+		background-color: transparent !important;
+	}
+
+.oddRow {
+	background-color: #f2f2f2;
+}
+
+.evenRow {
+	background-color: transparent !important;
+}
+
+.hidden {
+	display: none;
+}
+
+.hiddenCarousel {
+	visibility: hidden;
+}
+/*----------OrganizerMain.aspx----------------*/
+
+
+/*---------- NEW DelegateSelection.aspx----------------*/
+#layout-wrapper {
+	min-height: 90%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -57px;
+}
+
+#mainSingCont #delegateMain {
+	height: auto;
+	width: 600px;
+	overflow: hidden;
+	margin: 12px auto;
+}
+
+#mainSingCont #delegateSection {
+	height: auto;
+	width: 502px;
+	overflow: hidden;
+	margin: 12px auto;
+	padding: 12px !important;
+	background-color: white !important;
+}
+
+/*----------Inner Box Content ------------*/
+#mainSingCont div.delegateContent {
+	height: auto;
+	overflow: hidden;
+	padding: 12px !important;
+	border: 1px solid #cccccc;
+	border-radius: 8px;
+	background-color: white;
+}
+
+	#mainSingCont div.delegateContent.long,
+	#mainSingCont div.delegateContent.short {
+		height: auto;
+		overflow: hidden;
+		margin: 0px auto;
+	}
+
+	#mainSingCont div.delegateContent.long {
+		width: 475px;
+	}
+
+	#mainSingCont div.delegateContent.short {
+		width: 467px;
+		padding: 0px !important;
+	}
+
+	#mainSingCont div.delegateContent p {
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+		font-size: 12px;
+		text-align: left;
+		display: block;
+		margin-left: 0px !important;
+	}
+
+#delegateSection td.short,
+#delegateSection td.long,
+#delegateSection td.last {
+	display: inline-block;
+	font-size: 12px;
+}
+
+#delegateSection tr.row.odd {
+	background-color: #F2F2F2;
+}
+
+#delegateSection td.short {
+	width: 140px;
+}
+
+#delegateSection td.long {
+	width: 238px;
+}
+
+#delegateSection td.last {
+	width: 55px;
+}
+
+.delegateContent .row:nth-child(odd) {
+	background-color: #F2F2F2;
+}
+
+.delegateTable td {
+	padding-top: 7px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	height: 24px;
+}
+
+/*----------Inner Box Content ------------*/
+.centerLong {
+	display: block !important;
+	margin: 12px auto !important;
+	text-align: center !important;
+	/*width:250px!important;*/
+}
+
+.delegateheader {
+	display: block;
+	width: auto;
+	height: 21px;
+	padding: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+}
+
+span.delegateheader.short {
+	width: 144px !important;
+	padding-left: 11px;
+}
+
+span.delegateheader.long {
+	width: 238px;
+	padding-left: 11px;
+}
+
+/*---------- NEW DelegateSelection.aspx----------------*/
+
+/*---------- OLD DelegateSelection.aspx----------------*/
+
+
+#divContent .delegateMain {
+	width: 60%;
+	text-align: center;
+	padding: 50px;
+	margin: auto;
+}
+
+.style1 {
+	font-size: 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	color: #000099;
+	text-decoration: none;
+}
+
+.style3 {
+	color: #FFFFFF;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.highlightit img {
+	border: 0px;
+}
+
+.highlightit:hover img {
+	border: 3px outset #BEBEBE;
+}
+
+.highlightit:hover {
+	color: #BEBEBE; /* Dummy definition to overcome IE bug */
+}
+
+TR.Header TH {
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: bolder;
+	VERTICAL-ALIGN: bottom;
+	BORDER-BOTTOM: #cccccc 2px solid;
+	BACKGROUND-COLOR: #eeeeee
+}
+
+.Alternating {
+	FONT-SIZE: 9pt;
+	BACKGROUND-COLOR: #fdf6e3;
+}
+
+/*----------DelegateSelection.aspx----------------*/
+/* ---------START Site Profile Styles-------------*/
+.basicInfoTable .row td {
+	font-size: 12px;
+	padding: 7px 0px 7px 12px;
+	vertical-align: middle;
+	height: auto;
+	width: 200px;
+	margin-right: 0px !important;
+	overflow: hidden;
+}
+
+.basicInfoTable .row:nth-child(even) {
+	background-color: #F2F2F2;
+}
+
+.largeCopy {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 7px
+}
+
+#layout-wrapper {
+	min-height: 90%;
+	height: auto !important;
+	height: 100%;
+	margin: 0px;
+	min-width: 80%;
+}
+
+	#layout-wrapper textarea {
+		width: 230px;
+		margin-right: 8px
+	}
+
+	#layout-wrapper table td textarea {
+		width: 230px;
+	}
+
+#mainSingCont #delegateMain {
+	height: auto;
+	width: 1000px;
+	overflow: hidden;
+	margin: 12px auto;
+}
+
+
+/*---------START DEPENDENT TABLE--------------*/
+.dependentTable .row:nth-child(odd),
+.assignmentTable .row:nth-child(odd),
+.contactTable .row:nth-child(1+1) {
+	background-color: #F2F2F2;
+}
+
+.bottomRow {
+	background-color: #cccccc;
+	text-align: right !important;
+}
+
+	.bottomRow td {
+		text-align: right !important;
+		padding: 12px;
+	}
+
+.dependentTable td.iconBoxTD {
+	width: 40px;
+}
+
+td .red {
+	font-size: 16px !important;
+	color: #cc0000;
+	font-weight: 200;
+}
+
+.dependentTable {
+	border: 1px solid #dddddd;
+}
+
+	.dependentTable tr td,
+	.assignmentTable tr td,
+	.contactTable tr td {
+		border-right: 1px solid #dddddd;
+		border-bottom: 1px solid #dddddd;
+		padding: 10px 4px;
+	}
+
+	.dependentTable td {
+		vertical-align: middle;
+		text-align: center;
+		padding: 5px 2px;
+	}
+
+	.dependentTable tr td.iconBox {
+		vertical-align: middle;
+		text-align: center;
+		padding-left: 0px !important;
+		width: 30px !important;
+	}
+
+	.dependentTable td.shortTD .sectionHeader .reg {
+		display: block;
+		width: auto;
+		padding: 0px 5px;
+		margin: 1px auto;
+		font-weight: bold !important;
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	}
+
+	.dependentTable td.reg {
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	.dependentTable td.smallheader {
+		font-size: 10px;
+		font-weight: bold;
+	}
+
+	.dependentTable td.shortTD,
+	.assignmentTable td.shortTD,
+	.contactTable td.shortTD {
+		width: 100px !important;
+		text-align: left;
+	}
+
+	.dependentTable td.longTD .sectionHeader .smallheader {
+		font-size: 10px;
+		font-weight: normal;
+	}
+
+	.dependentTable td.longTD,
+	.assignmentTable td.longTD,
+	.contactTable td.longTD {
+		width: 180px !important;
+		text-align: left;
+	}
+
+	.dependentTable td input,
+	.assignmentTable td input,
+	.contactTable td input {
+		vertical-align: middle;
+		text-align: left;
+		width: 147px;
+		height: 24px;
+		margin: 0px auto;
+		padding: 2px;
+		display: inline-block
+	}
+
+	.dependentTable td table {
+		display: block !important;
+		overflow: hidden;
+		margin: 0px auto !important;
+	}
+
+	.dependentTable td td {
+		display: block;
+		width: 70px !important;
+		height: 15px !important;
+		overflow: hidden;
+		float: left;
+		border: 0 !important;
+	}
+
+		.dependentTable td td input {
+			display: block;
+			width: 15px !important;
+			height: 15px !important;
+			overflow: hidden;
+			margin: 0px auto;
+			float: left;
+		}
+
+	.dependentTable input[type="radio"],
+	.dependentTable input[type="radio"]:active,
+	.dependentTable input[type="radio"]:hover {
+		border-width: 0 !important;
+		outline: 0 !important;
+		box-shadow: 0 0 0 #fff;
+		width: auto;
+		vertical-align: middle;
+		height: 14px;
+		margin: 0px 2px 0 2px;
+		padding: 0;
+	}
+
+	.dependentTable td td label {
+		display: block;
+		width: auto !important;
+		height: auto !important;
+		overflow: hidden;
+		text-align: left;
+		float: left;
+		margin: 0px !important;
+		padding: 0px 0px 0px 4px !important;
+	}
+
+#mainSingCont div span.sectionHeader {
+	display: block;
+	width: auto;
+	padding: 0px 5px;
+	margin: 1px auto;
+	font-weight: bold !important;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.depeHeader.reg {
+	font-size: 12px;
+}
+
+#mainSingCont div span.smallheader {
+	font-size: 10px;
+	font-weight: normal;
+}
+/*---------END DEPENDENT TABLE--------------*/
+
+/*---------START ASSIGNMENT TABLE--------------*/
+
+.assignmentTable td .sectionHeader,
+.contactTable td .sectionHeader {
+	display: block;
+	width: auto;
+	margin: 1px auto;
+	font-weight: bold;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	line-height: 12px;
+}
+
+.contactTable tr td.noBorder,
+.assignmentTable tr td.noBorder {
+	border-right: 0px !important;
+	border-bottom: 1px solid #dddddd;
+}
+
+.noBorder {
+	font-weight: bold;
+}
+
+.assignmentTable td,
+.contactTable td {
+	vertical-align: middle;
+	text-align: left;
+	padding: 5px;
+}
+
+	.assignmentTable td.whiteBak {
+		background-color: white !important;
+		vertical-align: top;
+		min-width: 410px
+	}
+
+	.assignmentTable td textarea {
+		margin: 9px 0px 0px;
+		width: 445px;
+		height: 126px;
+	}
+
+	.assignmentTable td textarea {
+		margin: 9px 0px 0px;
+		width: 445px;
+		height: 126px;
+	}
+
+#mainSingCont div .assignmentTable span.sectionHeader,
+#mainSingCont div .contactTable span.sectionHeader {
+	display: block;
+	float: right;
+	min-width: 120px;
+	max-width: 250px;
+	padding: 0px 0px;
+	margin: 1px auto;
+	font-weight: bold !important;
+	font-family: 'open-sans', arial, helvetica, sans-serif;
+}
+
+#mainSingCont div .assignmentTable select {
+	height: 24px;
+	width: 118px;
+}
+
+td.firstBox {
+	border-left: 1px solid #dddddd;
+}
+
+td .assignmentTxtArea {
+	padding: 12px;
+	display: block;
+	vertical-align: top;
+}
+
+.assignmentTxtArea div {
+	font-weight: bold;
+	display: block;
+	padding-bottom: 7px;
+}
+
+.assignmentTable table tr {
+	border: 1px solid #e4e4e4;
+}
+
+.outlineBorder {
+	border: 1px solid #e4e4e4;
+}
+/*---------END ASSIGNMENT TABLE--------------*/
+
+/*---------START CONTACT DETAILS TABLE--------------*/
+#mainSingCont div .contactTable td {
+	padding: 7px 12px;
+}
+
+contactTable td a {
+	text-align: center;
+	display: block;
+}
+
+#mainSingCont div .contactTable td input {
+	width: 150px;
+	padding: 2px;
+}
+
+.shortBox span {
+	/*display:block;*/
+	margin: 0px auto;
+}
+
+.saveTxt {
+	padding-right: 40px;
+}
+
+.sectionHeader {
+	padding-top: 20px;
+}
+
+.listviewExt .headerClear {
+	background-color: none;
+}
+
+.startRow {
+	margin-top: 12px;
+	padding-top: 12px;
+}
+
+.uploadDocs {
+	display: block;
+	margin-left: 95px;
+	margin-bottom: 25px;
+	width: auto;
+}
+
+	.uploadDocs input[type=text] {
+		color: #3c3c3c;
+		background: #fff;
+		border-radius: 3px;
+		padding: 0px 3px 5px 3px;
+		display: block;
+		overflow: visible;
+		height: 30px;
+		float: left;
+		/* ----FOR IE7-8 --- */
+		padding-top: 3px\0;
+		padding-bottom: 0px\0;
+		padding-left: 3px\0;
+	}
+
+	.uploadDocs td {
+		display: inline-block;
+		float: left;
+		margin-right: 12px;
+		height: 30px;
+	}
+
+	.uploadDocs .chooseFileSect input {
+		color: #3c3c3c;
+		overflow: visible;
+		height: 30px;
+		width: auto;
+		float: left;
+		box-shadow: 0 1px 3px #fff inset;
+	}
+
+.radioButtSet {
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+}
+
+.basicInfoTable .radioButtSet td {
+	width: auto;
+	margin-right: 12px;
+}
+/*---------END CONTACT DETAILS TABLE--------------*/
+/*----------Taken from SiteProfile.aspx-----------*/
+td.InputName {
+	text-align: right;
+	vertical-align: top;
+	padding-right: 7px;
+	padding-top: 5px;
+}
+
+td.InputValue {
+	text-align: left;
+	vertical-align: top;
+}
+
+td.InputNameAlignText {
+	text-align: right;
+	vertical-align: top;
+	padding-right: 7px;
+}
+
+table.InputSection {
+	margin-left: 150px;
+}
+
+/*----------Taken from SiteProfile.aspx-----------*/
+
+/* ---------END Site Profile Styles-------------*/
+/* ---------START SETTINGS Styles-------------*/
+
+#upSettings {
+	margin: 0px 10px;
+}
+
+#divReserveMainContent {
+	width: auto;
+	padding: 20px;
+}
+
+/* ---------END SETTINGS Styles-------------*/
+
+/*----------Taken from the ScheduleMeetingCalendar.aspx---------*/
+#divMainContent {
+	margin-left: 20px;
+}
+
+	#divMainContent .Calendar table td {
+		color: #ffffff;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+.CalendarMonthHeader table td {
+	color: #ffffff;
+	text-align: center;
+	background-color: #005297 !important;
+}
+
+.calMeetingDay {
+	padding-left: 4px;
+	border: 1px solid #F2F2F2;
+	background-color: White;
+	font-size: 9pt;
+	color: #000000;
+}
+
+.calMeetingDayHeader {
+	vertical-align: middle;
+	text-align: center;
+	font-size: 9pt;
+	color: #000000;
+	font-weight: bold;
+}
+
+.Calendar {
+	color: transparent !important;
+	background-color: #F2F2F2 !important;
+	border-color: silver !important;
+	border-width: 1px !important;
+	border-style: solid !important;
+	height: 413px !important;
+	width: 100% !important;
+	border-collapse: collapse !important;
+}
+
+.CalendarMonthHeader {
+	color: white !important;
+	background-color: #005297 !important;
+	border-width: 0px !important;
+	border-style: solid !important;
+	height: 20px !important;
+	width: 100% !important;
+	border-collapse: collapse !important;
+	font-size: larger !important;
+	font-weight: bold;
+	padding-top: 2px;
+}
+
+#calMeeting .Calendar td {
+	font-size: 9pt !important;
+	font-weight: bold;
+}
+
+#divMainContent .meetingSchedule {
+	width: 99%;
+	height: 100%;
+	margin: 5px;
+	background-color: White;
+}
+
+#divMainContent li {
+	list-style-type: disc;
+	list-style-position: inside;
+	padding-left: 20px;
+}
+
+.meetingDetails {
+	position: absolute;
+	text-align: left;
+	width: 400px;
+	background-color: #FFFFFF;
+}
+
+#divMainContent .accordionHeader {
+	background-color: #004f95;
+	color: white;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: larger;
+	font-weight: bold;
+	margin-top: 10px;
+	padding: 5px 0 5px 0;
+}
+/*---------- BEGIN BUBBLE RELATED STYLES -----------*/
+/*
+div#container{width: 500px; margin:0 auto}
+h1{ color: #F60; margin: 1em 0 0; letter-spacing: -2px; }
+p{margin: 0 0 1.7em; }
+*/
+/*---------- bubble tooltip -----------*/
+#divMainContent a.tt {
+	position: relative;
+	z-index: 995;
+	color: #3CA3FF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+	#divMainContent a.tt span {
+		display: none;
+	}
+	/*background:; ie hack, something must be changed in a for ie to execute it*/
+	#divMainContent a.tt:hover {
+		z-index: 999;
+		color: #aaaaff;
+	}
+
+		#divMainContent a.tt:hover span.tooltip {
+			z-index: 999;
+			display: block;
+			position: absolute;
+			top: 0px;
+			left: 0;
+			padding: 15px 0 0 0;
+			width: 200px;
+			color: #993300;
+			text-align: center;
+			filter: alpha(opacity:90);
+			khtmlopacity: 0.90;
+			mozopacity: 0.90;
+			opacity: 0.90;
+		}
+
+		#divMainContent a.tt:hover span.top {
+			display: block;
+			padding: 30px 8px 0;
+			background: url(../../images/bubble.gif) no-repeat top;
+		}
+
+		#divMainContent a.tt:hover span.middle {
+			/* different middle bg for stretch */
+			display: block;
+			padding: 0 8px 0;
+			background: url(../../images/bubble_filler.gif) repeat bottom;
+		}
+
+		#divMainContent a.tt:hover span.bottom {
+			display: block;
+			padding: 3px 8px 10px;
+			color: #548912;
+			background: url(../../images/bubble.gif) no-repeat bottom;
+		}
+/*---------- END BUBBLE RELATED STYLES -----------*/
+/*----------Taken from the SiteProfile.aspx---------*/
+/*----------Travel Tracker - TD/Introduction.aspx---------*/
+#formBottom {
+	height: auto;
+	overflow: hidden;
+	text-align: right;
+	padding: 10px;
+}
+/*----------TD/Introduction.aspx---------*/
+
+
+/*----------styles from ManageDelegates.ascx---------*/
+.modalBackground {
+	background-color: Gray;
+	filter: alpha(opacity=70);
+	opacity: 0.7;
+}
+
+.modalPopup {
+	background-color: #ffffff;
+	border-width: 3px;
+	border-style: solid;
+	border-color: Gray;
+	padding: 2px;
+	width: 400px;
+	height: 360px;
+	cursor: pointer;
+	z-index: 999999 !important;
+}
+
+.borderHeader {
+	border-right: solid 1px #ddd;
+	background-color: #EAEAEA;
+	padding-left: 5px;
+}
+
+.borderData {
+	padding-left: 5px;
+}
+
+.contentGridContainerStyle {
+	border: 1px solid #ddd;
+	margin-top: 15px;
+	position: relative;
+	behavior: url(pie.htc);
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari and Chrome */
+	border-radius: 3px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
+
+
+/*----------styles from ManageDelegates.ascx---------*/
+/*----------styles for OrganizerLanguageSelection.aspx Starts --------*/
+.tblOLSBigger {
+	margin-left: 32px;
+	padding-top: 15px;
+}
+
+	.tblOLSBigger td {
+		padding-bottom: 10px;
+	}
+
+		.tblOLSBigger td td {
+			padding-bottom: 10px;
+		}
+
+.formBottomStyle {
+	text-align: center;
+	padding: 10px;
+}
+
+
+/*----------styles for OrganizerLanguageSelection.aspx Ends ----------*/
+/*----------styles for Logout.aspx Starts ----------*/
+
+.mainTableLogout {
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+	height: 380px;
+	border-color: #3A7BBB;
+	border-style: solid;
+	border-width: 1px;
+}
+
+	.mainTableLogout td {
+		vertical-align: middle;
+		align-self: center;
+		text-align: center;
+	}
+
+	.mainTableLogout a {
+		text-decoration: underline;
+	}
+/*----------styles for Logout.aspx Ends ----------*/
+
+.greenSpan {
+	color: #68a900;
+}
+
+.ReserveTable {
+	width: 100%;
+	text-align: left;
+}
+
+	.ReserveTable th {
+		font-weight: normal;
+		font-size: 13px;
+		text-align: left;
+		padding-bottom: 5px;
+	}
+
+	.ReserveTable .Heading {
+		font-weight: bold;
+		white-space: nowrap;
+	}
+
+	.ReserveTable td {
+		width: auto;
+		height: auto;
+		overflow: hidden;
+		vertical-align: middle;
+		padding: 5px 5px 5px 0px;
+	}
+
+/*----------styles for Travel Summary Portlet - Not Started Text ----------*/
+.ttMessage {
+	width: 35em;
+	height: auto;
+	overflow: hidden;
+	vertical-align: middle;
+	float: right;
+	display: block;
+	margin-top: 90px;
+	text-align: justify;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+/*---- Infocenter portlet ---------*/
+.toggleRight {
+	float: right;
+	padding-right: 3px;
+}
+
+.iconBox {
+	width: 7% !important;
+}
+
+i.blue {
+	color: #1688c3;
+}
+/*---------------------------------*/
+
+
+/*----- Selfservice pages ---------*/
+.CurvedTable {
+	float: left;
+	width: 275px;
+	background-color: #fff;
+	border-radius: 5px;
+	border: 1px solid #c9c9c9;
+	overflow: hidden;
+}
+
+	.CurvedTable tr:first-child {
+		height: 30px;
+		background-color: #106caa;
+	}
+
+		.CurvedTable tr:first-child td:first-child {
+			color: #fff !important;
+			vertical-align: middle !important;
+			border-top-left-radius: 5px;
+		}
+
+		.CurvedTable tr:first-child td:last-child {
+			border-top-right-radius: 5px;
+		}
+
+	.CurvedTable td {
+		padding-left: 5px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		vertical-align: top;
+	}
+
+		.CurvedTable td:first-child {
+			color: #1688c3;
+			font-weight: bold;
+			width: 125px;
+		}
+
+	.CurvedTable .infoTD {
+		color: inherit !important;
+		font-weight: normal !important;
+	}
+
+.EmptyRow {
+	height: 10px !important;
+}
+
+.SelfServiceDiv {
+	padding-left: 15px;
+	margin: auto;
+}
+
+	.SelfServiceDiv a {
+		text-decoration: underline;
+	}
+
+	.SelfServiceDiv .nounderline {
+		text-decoration: none !important;
+	}
+
+	.SelfServiceDiv .left {
+		float: left;
+		margin-left: 0px !important;
+		margin-right: 50px !important;
+		display: block;
+	}
+
+	.SelfServiceDiv .pane-right {
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+		margin-bottom: 900px;
+		margin-top: 15px;
+		height: 1180px !important;
+	}
+
+
+.SelfServiceTable tr {
+	height: 25px;
+}
+
+	.SelfServiceTable tr td label {
+		color: black;
+		/*font-size:9pt;*/
+	}
+
+.SelfServiceTable .descItalic {
+	font-style: italic;
+}
+
+.SelfServiceMenuTable {
+	float: left;
+	width: 250px;
+	background-color: #fff;
+}
+
+
+.italic {
+	font-style: italic;
+}
+
+
+.BenefitTable tr:first-child {
+	background-color: #BCD1E9 !important;
+}
+
+.BenefitTable td:first-child {
+	width: 40% !important;
+	text-align: left !important;
+}
+
+.BenefitTable tr:first-child td {
+	font-weight: bold;
+}
+
+.BenefitTable td .tdSpacing {
+	padding-left: 10px;
+}
+
+.BenefitTable tr:nth-child(2n+1) {
+	background-color: #F2F2F2;
+}
+
+.BenefitTable {
+	width: 90%;
+	border: 1px solid #dddddd;
+	color: #000000;
+}
+
+.fontBlack {
+	color: #000000;
+}
+
+.BenefitTable {
+	width: 90%;
+	border: 1px solid #dddddd;
+}
+
+	.BenefitTable tr td {
+		border-right: 1px solid #dddddd;
+		border-bottom: 1px solid #dddddd;
+		padding: 10px 4px;
+		vertical-align: middle;
+		width: 20%;
+		text-align: right !important;
+	}
+
+		.BenefitTable tr td.iconBox {
+			vertical-align: middle;
+			text-align: center;
+			padding-left: 0px !important;
+			width: 30px !important;
+		}
+
+.DependentsTable tr:first-child {
+	height: 30px;
+	background-color: #BCD1E9 !important;
+}
+
+.DependentsTable td:first-child, .DependentsTable th:first-child {
+	width: 40% !important;
+}
+
+.DependentsTable tr:nth-child(2n+1) {
+	background-color: #F2F2F2;
+}
+
+.DependentsTable {
+	width: 90%;
+	border: 1px solid #dddddd;
+}
+
+	.DependentsTable tr td, .DependentsTable th {
+		border-right: 1px solid #dddddd;
+		border-bottom: 1px solid #dddddd;
+		padding: 10px 15px;
+		text-align: left;
+		width: 20%;
+		font-weight: bold;
+	}
+
+.form-buttons {
+	background: #fff;
+	background: -moz-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#fcfcfc),color-stop(100%,#eee));
+	background: -webkit-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -o-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: -ms-linear-gradient(top,#fcfcfc 0,#eee 100%);
+	background: linear-gradient(to bottom,#fcfcfc 0,#eee 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc',endColorstr='#eeeeee',GradientType=0);
+	border-radius: 4px;
+	overflow: auto;
+	border: 1px solid #ddd;
+	padding: 10px 8px;
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: right;
+	margin-right: 10px;
+}
+
+	.form-buttons a {
+		text-decoration: none;
+	}
+
+.AddDependentTable {
+	/*width:100%;*/
+	padding-left: 5px;
+	padding-right: 5px;
+	border-spacing: 7px;
+	border-collapse: separate;
+	color: black;
+}
+
+	.AddDependentTable .alignRight {
+		text-align: right;
+	}
+
+	.AddDependentTable .tabHeadingLeft {
+		padding-left: 10px;
+	}
+
+	.AddDependentTable .greyLife {
+		color: grey;
+	}
+
+	.AddDependentTable .tabLeft {
+		padding-left: 20px;
+	}
+
+	.AddDependentTable input[type=text], .AddDependentTable .k-dropdown, .AddDependentTable .k-datepicker {
+		width: 130px !important;
+		color: #000;
+	}
+
+
+	.AddDependentTable .tdSSN {
+		width: 30%;
+		vertical-align: top;
+	}
+
+.ElectBenefitsDetail {
+	/*width:100%;*/
+	padding-left: 15px;
+	padding-right: 2px;
+	border-spacing: 2px;
+	border-collapse: separate;
+	color: black;
+}
+
+	.ElectBenefitsDetail .alignRight {
+		text-align: right;
+	}
+
+	.ElectBenefitsDetail .tabHeadingLeft {
+		padding-left: 10px;
+	}
+
+	.ElectBenefitsDetail .greyLife {
+		color: grey;
+	}
+
+	.ElectBenefitsDetail .tabLeft {
+		padding-left: 20px;
+	}
+
+	.ElectBenefitsDetail input[type=text], .ElectBenefitsDetail .k-dropdown, .ElectBenefitsDetail .k-datepicker {
+		width: 135px !important;
+	}
+
+	.ElectBenefitsDetail tr td span label[for=chkLTD] {
+		color: black;
+	}
+
+	.ElectBenefitsDetail .onlyPaddingLeft {
+		padding-left: 35px;
+		color: black;
+	}
+
+	.ElectBenefitsDetail .onlyPaddingBottom {
+		padding-bottom: 8px;
+	}
+
+	.ElectBenefitsDetail .onlyPaddingTop {
+		padding-top: 5px;
+	}
+
+.addBankSelfService {
+	width: 100%;
+	color: #000;
+}
+
+	.addBankSelfService .paddingTop {
+		padding-top: 20px;
+	}
+
+.addBankaddBankSelfService .paddingBottom {
+	padding-bottom: 10px;
+}
+
+.addBankSelfService td input {
+	color: #000;
+	}
+
+.addBankSelfService .sspAddBankReqField {
+	padding-left: 8px;
+}
+
+.divBenefits {
+	display: flex;
+	width: 600px;
+	height: 550px;
+	max-height: 600px !important;
+	max-width: 800px !important;
+}
+
+.BenefitsRadioList {
+	width: 100%;
+	color: black;
+}
+
+	.BenefitsRadioList td {
+		width: 50%;
+	}
+
+	.BenefitsRadioList tr {
+		height: 18px;
+	}
+
+.divWarningBox {
+	display: flex;
+	width: 300px;
+	height: 85px;
+	max-height: 100px !important;
+	max-width: 300px !important;
+	padding-top:30px;
+}
+
+.divDDLs {
+	display: inline-block;
+}
+
+/*----- END Selfservice pages ---------*/
+
+/* ========= START Missing Info Styles ========= */
+#upMissingInfo {
+	padding-top: 20px;
+}
+
+.BannerFlag {
+	position: fixed !important;
+	z-index: 101;
+	width: 100% !important;
+}
+
+.bannerMissingInfo {
+	display: block;
+	position: relative !important;
+}
+
+/* ========= END Missing Info Styles  ========= */
+
+
+/*----------styles for Travel Summary Portlet - Not Started Text ----------*/
+
+/*----------styles for Help.aspx Starts ----------*/
+.helpUpContent {
+	padding-left: 30px !important;
+	float: right;
+}
+
+#upcontent {
+	margin: 0px 10px;
+}
+/*----------styles for Help.aspx Ends ----------*/
+
+
+/*----------styles for SecretQuestionCtrl.ascx Starts ----------*/
+.ddlQuestionSecretQus, .tdSecretAnswer input[type="text"] {
+	min-width: 320px;
+}
+
+#ddlQuestions-list {
+	width: 318px !important;
+}
+
+.tdSecretQuestion {
+	white-space: nowrap;
+}
+/*----------styles for SecretQuestionCtrl.ascx Ends ----------*/
+
+/*----------styles for Datailed Report (OrganizerReport.aspx) Starts ----------*/
+.addSpaceToTheLeft {
+	padding-left: 5px;
+}
+
+table[id*='tblQuestValSummary'] {
+	color: Red !important;
+}
+
+/* ========= START styles from Detailed Report (OrganizerReport.aspx) ========= */
+.ErrorMsg {
+	color: Red;
+}
+
+.labelBold {
+	font-weight: 600;
+}
+
+.smallTD {
+	width: 5%;
+}
+
+div#renderregion {
+	padding-left: 5px;
+}
+/* ========= END styles from Detailed Report (OrganizerReport.aspx) ========= */
+
+/* ========= START styles for ADMIN EDITOR ========= */
+#adminTool b {
+	font-weight: bold;
+}
+
+#adminTool i {
+	font-style: italic;
+}
+
+#adminTool ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+	margin-left: 12px;
+}
+
+#adminTool ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+	margin-left: 12px;
+}
+
+#adminTool blockquote {
+	font-style: normal;
+}
+
+#adminTool pre {
+	white-space: pre-wrap
+}
+
+#adminTool .ind {
+	display: block;
+	margin-left: 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+/* ========= END styles for ADMIN EDITOR ========= */
+
+
+.labelBlue {
+	color: #1a78b6;
+}
+
+#ctl00_ContentPlaceHolder1_questionsTable td textarea {
+	width: 80% !important;
+}
+
+#dvInterviewNotesWindow td textarea {
+	width: 100% !important;
+}
+
+.succMess {
+	display: block;
+	width: auto;
+	height: auto;
+	padding: 7px;
+	margin: 7px 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	border-radius: 5px;
+	color: #68a900;
+}
+/*-------------FROM ClientStyle.css -----------------------------*/
+/*
+body
+{	
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 0.75em;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    color: #000000;
+    text-align: center;
+    background: url(images/background.png);
+}
+TD
+{	
+    FONT-SIZE: 9pt;
+    COLOR: #000000;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    margin-left: 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}*/
+
+#topbanner {
+	margin: 0;
+	width: 980px;
+	height: 73px;
+	background: #fff url(images/banner.png) top center no-repeat;
+	text-align: right;
+	border-bottom: 1px solid #949494;
+}
+
+.topBannerText {
+	padding-top: 10px;
+	padding-right: 15px;
+}
+
+.small {
+	font-size: 8pt;
+}
+
+.footer {
+	font-size: 7pt;
+	color: #666666;
+}
+
+.bold, b {
+	font-weight: bold;
+}
+
+.info {
+	font-size: 9pt;
+	color: #666666;
+}
+
+#container {
+	width: 980px;
+	height: 90%;
+	margin-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0;
+}
+
+#clientContainer {
+	position: relative;
+	height: 100%;
+	width: 978px;
+	margin-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10;
+	border: 1px solid #ddd;
+	background: #fff;
+}
+
+#form1 {
+	margin-top: 50;
+}
+
+#redSpacer {
+	height: 18px;
+	background: url(images/red_bar.png);
+	text-align: right;
+	vertical-align: text-bottom;
+}
+
+#contactlink {
+	padding-top: 50px;
+	margin-top: 50px;
+	cursor: pointer;
+}
+
+a.headerLink {
+	font-size: 0.85em;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-weight: bolder;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.logout {
+	font-size: 0.75em;
+	font-weight: bold;
+	color: #000099;
+	text-decoration: none;
+}
+
+#welcome {
+	font-weight: 900;
+}
+
+.leftNav {
+	/*add gradient*/
+	/*background-color:#d5e6ef;*/
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e8e8e8'); /* for IE */
+	/*background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e8e8e8)); /* for Other Browsers*/
+	/*height:inherit;*/
+}
+
+.leftNavTd {
+	vertical-align: top;
+	height: 15px;
+	background: url(images/nav_bg_off.png) top center repeat-x;
+	font-weight: bolder;
+	color: #000;
+}
+
+.leftNavTdActive {
+	vertical-align: top;
+	height: 15px;
+	background: url(images/nav_bg_on.png) top center repeat-x;
+	font-weight: bolder;
+	color: White;
+}
+
+.leftNavTower {
+	/*border-bottom: 1px solid #ddd;*/
+	vertical-align: Top;
+	/*height:35px;*/
+	padding-left: 8px;
+	padding-top: 55px;
+	margin-top: 55px;
+	background: url(images/client_nav_tower.png) bottom center no-repeat;
+}
+
+.leftNavTdTop {
+	/*border-bottom: 1px solid #ddd;*/
+	vertical-align: bottom;
+	/*height:35px;*/
+	padding-left: 8px;
+}
+
+.leftNavTdBottom {
+	border-top: 1px solid #C0C0C0;
+	vertical-align: middle;
+	/*height:35px;*/
+}
+
+.navButton {
+	/*margin-left:35px;*/
+	cursor: pointer;
+	border: 1px solid gray;
+}
+
+.navButtonBack {
+	/*background: url(images/nav_bg_on.png);*/
+	/*color:#000;*/
+	cursor: pointer;
+}
+
+.navButtonTable {
+	margin-left: 10px;
+	height: 28px;
+}
+
+.navText {
+	color: Gray;
+	font-size: 0.90em;
+	padding-left: 10px;
+}
+
+.navTextActive {
+	color: White;
+	font-size: 0.90em;
+	padding-left: 10px;
+}
+
+.grayText {
+	color: Gray;
+	font-size: 0.90em;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.grayTextArea {
+	color: Gray;
+	font-size: 0.95em;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.grayTextSmall {
+	color: #000;
+	font-size: 0.85em;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.grayTextBold {
+	color: Gray;
+	font-size: 0.95em;
+	font-weight: bold;
+}
+
+.popupTextArea {
+	font-size: 0.95em;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+}
+
+.errText {
+	color: Red;
+	font-size: 0.90em;
+}
+
+.makeLink {
+	color: #0066FF;
+	font-size: 0.95em;
+	cursor: pointer;
+}
+
+.contentBannerLeft {
+	border-right: 1px solid #C0C0C0;
+	font-weight: bold;
+	/*width:260px;*/
+	height: 35;
+}
+
+.contentBanner {
+	border-right: 1px solid #C0C0C0;
+	font-weight: bold;
+	height: 35;
+}
+
+.contentBannerRight {
+	vertical-align: middle;
+	/*width:260px;*/
+	height: 35;
+	margin-right: 5px;
+}
+
+.tabHeaderCSS {
+	font-family: Verdana, Arial, Courier New;
+	font-size: 10px;
+	background-color: Silver;
+	text-align: left;
+	cursor: pointer;
+}
+
+
+/* jquery popup */
+#backgroundPopup {
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000000;
+	border: 1px solid #cecece;
+	z-index: 1;
+}
+
+#popupContact {
+	display: none;
+	position: fixed;
+	_position: absolute; /* hack for internet explorer 6*/
+	height: 384px;
+	width: 408px;
+	background: #FFFFFF;
+	border: 2px solid #cecece;
+	z-index: 2;
+	padding: 12px;
+	font-size: 13px;
+}
+
+	#popupContact h1 {
+		text-align: left;
+		color: #6FA5FD;
+		font-size: 22px;
+		font-weight: 700;
+		border-bottom: 1px dotted #D3D3D3;
+		padding-bottom: 2px;
+		margin-bottom: 20px;
+	}
+
+#popupContactClose {
+	font-size: 14px;
+	line-height: 14px;
+	right: 6px;
+	top: 4px;
+	position: absolute;
+	color: #6fa5fd;
+	font-weight: 700;
+	display: block;
+}
+
+.assignmentBarStyle {
+	width: 745px;
+	height: 45px;
+	background: url(images/assignmentsBG.gif) no-repeat;
+}
+
+/*
+.assignmentBarStyle
+{
+    border: 1px solid #E0E0E0;
+    width:745px;
+    height:45px;
+    -moz-border-radius: 5px; --Firefox -
+    -webkit-border-radius: 5px; --Safari and Chrome -
+    border-radius: 5px; ---Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3    
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f0f0f0');
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f0f0f0));
+}
+*/
+
+.3dDropDownStyle {
+	border: 1px solid #E0E0E0;
+	width: 100px;
+	height: 15px;
+	behavior: url(pie.htc);
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Safari and Chrome */
+	border-radius: 3px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
+
+.homeContentStyle {
+	border: 1px solid #ddd;
+	padding-top: 5px;
+	margin-bottom: 5px;
+	behavior: url(pie.htc);
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Safari and Chrome */
+	border-radius: 5px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
+
+.homeContentSubStyle {
+	position: relative;
+	border: 1px solid #E0E0E0;
+	width: 650px;
+	margin-bottom: 5px;
+	behavior: url(pie.htc);
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Safari and Chrome */
+	border-radius: 5px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
+
+.homeContentSubHeader {
+	background-color: #E0E0E0;
+	padding-left: 10px;
+	color: Gray;
+	height: 25px;
+}
+
+.contentGridContainerStyle {
+	border: 1px solid #ddd;
+	margin-top: 15px;
+	position: relative;
+	behavior: url(pie.htc);
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari and Chrome */
+	border-radius: 3px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
+
+.contentGridStyle {
+	width: 500px;
+}
+
+	.contentGridStyle th {
+		border-top: solid 1px #ddd;
+		background-color: #EAEAEA;
+	}
+
+.contentGridStyleLastItem {
+	padding-right: 5px;
+}
+
+.contentGridStyleFirstItem {
+	padding-left: 5px;
+}
+
+.borderHeader {
+	border-right: solid 1px #ddd;
+	background-color: #EAEAEA;
+	padding-left: 5px;
+}
+
+.borderHeaderLeft {
+	border-left: solid 1px #ddd;
+	border-right: solid 1px #ddd;
+	background-color: #EAEAEA;
+	padding-left: 5px;
+}
+
+.borderHeaderRight {
+	border-right: solid 1px #ddd;
+	background-color: #EAEAEA;
+	padding-left: 5px;
+}
+
+.borderData {
+	padding-left: 5px;
+}
+
+.borderDataLeft {
+	border-left: solid 1px #ddd;
+	padding-left: 5px;
+}
+
+.contentGridStyle td {
+	height: 24px;
+	font-size: 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	color: #333333;
+	white-space: normal;
+	text-align: left;
+	background-color: #F8F8F8;
+	border-top: solid 1px #ddd;
+}
+
+.fixedheader {
+	font-weight: bold;
+	position: absolute;
+	background-color: #006699;
+	color: #ffffff;
+	height: 100px;
+	top: expression(Sys.UI.DomElement.getBounds(document.getElementById("ctl00_ContentPlaceHolder1_ContentTabControl_TAB5_balanceSummary_pnlScrollableContainer")).y-100);
+}
+
+.contentGridScollStyle {
+	width: 500px;
+}
+
+	.contentGridScollStyle th {
+		border-top: solid 1px #ddd;
+		background-color: #EAEAEA;
+		border-bottom: solid 1px #ddd;
+	}
+
+	.contentGridScollStyle td {
+		height: 24px;
+		font-size: 12px;
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+		color: #333333;
+		white-space: normal;
+		text-align: left;
+		background-color: #F8F8F8;
+		border-bottom: solid 1px #ddd;
+	}
+
+.Settings {
+	color: #3366ff;
+	font-size: 12px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	text-decoration: none;
+}
+
+	.Settings:hover {
+		color: #3366ff;
+		font-size: 12px;
+		font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+		text-decoration: none;
+	}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////
+Begin AjaxControlKit Dropdown CSS
+////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.ContextMenuPanel {
+	border: 1px solid Gray;
+	z-index: 100001;
+	background: url(images/menu-bg.gif) repeat-y 0 0 #FAFAFA;
+	cursor: default;
+	padding: 1px 1px 0px 1px;
+	font-size: 11px;
+}
+
+.ContextMenuBreak {
+	margin: 1px 1px 1px 32px;
+	padding: 0;
+	height: 1px;
+	overflow: hidden;
+	display: block;
+	border-top: 1px solid Gray;
+}
+
+a.ContextMenuItem {
+	margin: 1px 0 1px 0;
+	display: block;
+	color: Gray;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 4px 19px 4px 33px;
+	white-space: nowrap;
+}
+
+a.ContextMenuItem-Selected {
+	font-weight: bold;
+}
+
+a.ContextMenuItem:hover {
+	background-color: #f0f0f0;
+	color: #003399;
+	border: 1px solid Gray;
+	padding: 3px 18px 3px 32px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////
+END AjaxControlKit Dropdown CSS
+////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/* -----------  END FROM ClientStyle.css-----------------------------------------*/
+
+/* ---------------------------- START Organizer Submission pages ----------------------*/
+
+.submissionContent {
+	padding: 50px;
+}
+
+ul.submissionULBulletList {
+	list-style-type: square !important;
+	padding-left: 15px;
+	text-align: left;
+	float: left;
+	line-height: 16px;
+	display: inline-block;
+	font-weight: bold;
+}
+
+	ul.submissionULBulletList li {
+		list-style-type: square !important;
+	}
+
+ul.submitTDULBulletList li {
+	list-style-type: square !important;
+	font-weight: bold;
+	margin-left: 35px;
+}
+
+ul.submissionULList {
+	list-style-type: none;
+	padding-left: 12px;
+	text-align: left;
+	float: left;
+	line-height: 23px;
+	display: inline-block;
+}
+
+.submisionTable {
+	border-spacing: 5px;
+}
+
+.submissionBlueTable {
+	font-size: 13px;
+	color: #0091DA;
+	line-height: 21px;
+	background-color: #CAE8F8;
+	border: 1px solid #7EC7EC;
+	padding: 20px;
+}
+
+i.reviewLater {
+	color: red;
+	margin-left: 3px;
+}
+
+#pnlDetail_internal {
+	padding: 10px;
+}
+
+/*.submissionDetails
+{    
+    visibility:hidden;
+    border: 2px ridge black;    
+    width: 65%;
+    bottom:350px;
+    overflow: auto;
+    position: absolute;
+    vertical-align: middle;
+}*/
+
+#tvSubmitCheck a:focus {
+	box-shadow: none !important;
+}
+
+.TDSummaryTable tr:nth-child(2n+1) {
+	background-color: #F2F2F2;
+}
+
+.TDSummaryTable {
+	border-collapse: collapse;
+	border: 1px solid #dddddd;
+	width: 80%;
+}
+
+	.TDSummaryTable tr td, .TDSummaryTable th {
+		border: 1px solid #dddddd;
+		padding: 10px 15px;
+		font-weight: bold;
+	}
+
+.RequirementDocTable tr:first-child td {
+	height: 25px;
+	font-weight: bold !important;
+	vertical-align: middle;
+}
+
+.RequirementDocTable td:first-child, .RequirementDocTable th:first-child {
+	width: 35% !important;
+}
+
+.RequirementDocTable tr:nth-child(2n+1) {
+	background-color: #F2F2F2;
+}
+
+.RequirementDocTable {
+	width: 80%;
+	border: 1px solid #dddddd;
+}
+
+	.RequirementDocTable tr td, .RequirementDocTable th {
+		border-right: 1px solid #dddddd;
+		border-bottom: 1px solid #dddddd;
+		padding: 8px 10px;
+	}
+
+.UploadRequiredDoc {
+	margin-top: 10px;
+	margin-right: 20px;
+	float: right;
+}
+
+.AdditionalDetails tr {
+	width: 100%;
+	vertical-align: middle;
+}
+
+.AdditionalDetails .first {
+	width: auto;
+	max-width: 200px;
+	margin-right: 12px;
+	padding: 8px 12px 8px 24px;
+	height: auto;
+	line-height: 12px;
+	overflow: hidden;
+}
+
+.AdditionalDetails .last {
+	padding-right: 13%;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+}
+
+.AdditionalDetails td, .AdditionalDetails th {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	vertical-align: top;
+	padding: 9px;
+}
+
+.AdditionalDetails textarea {
+	width: 50% !important;
+}
+
+#imgDelete.button-to-link {
+	color: #106caa !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+	font-weight: 600 !important;
+	font-size: 11px !important;
+	background: transparent !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+	border: 0 solid white !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+/* ---------------------------- END Organizer Submission pages ----------------------*/
+
+/* ------------ Styles for dropdowns -----------------------------------------*/
+
+.ddlClientEval {
+	width: 100% !important;
+}
+
+.ddlTwoInARow {
+	width: 40% !important;
+}
+
+.ddlOrgControll {
+	min-width: 230px !important;
+}
+
+/* ------------ END of Styles for dropdowns -----------------------------------------*/
+
+
+.pagination {
+	height: 22;
+	font-size: 22pt;
+	color: #AEAEAE;
+	font-family: Arial;
+}
+
+/* ------------ START of Styles for BULLETTED ITEMS -----------------------------------------*/
+.FormTable div ul {
+	list-style-type: disc !important;
+	margin-left: 24px;
+}
+
+.FormTable ol {
+	list-style-type: decimal !important;
+	margin-left: 12px;
+}
+
+.FormTable ul {
+	list-style-type: disc !important;
+	margin-left: 12px;
+}
+
+.FormTable li {
+	list-style-type: disc !important;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+/* ------------ END of Styles for BULLETTED ITEMS -----------------------------------------*/
+
+/*-----------------*/
+.noLink {
+	color: #106CAA;
+	font-weight: 600;
+}
+/*-----------------*/
+
+/* ------------ START Styles Taken From KPMGToolTip.css-----------------------------------------*/
+.notFoundError {
+	display: block;
+	height: auto;
+	width: auto;
+	overflow: hidden;
+	margin-left: 32px;
+}
+
+.kpmgToolTip {
+	font-size: 11px;
+	position: absolute;
+	z-index: 100000;
+	padding: 5px;
+}
+
+.kpmgToolTip-inner {
+	background-color: #fff;
+	color: #494949;
+	max-width: 320px;
+	text-align: left;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	right: 72px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	position: relative;
+	left: 0;
+	border-width: 0;
+	padding: 9px;
+	border: 1px solid #8c8c8c;
+	border-radius: 3px;
+}
+
+	.kpmgToolTip-inner ul li,
+	.kpmgToolTip-inner ol li {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		margin-left: 18px;
+		padding-left: 0px;
+	}
+
+	.kpmgToolTip-inner ul {
+		list-style-type: disc !important;
+		margin-left: 12px;
+	}
+
+	.kpmgToolTip-inner ol {
+		list-style-type: decimal !important;
+		margin-left: 12px;
+	}
+
+	.kpmgToolTip-inner li {
+		padding-left: 12px;
+		list-style-position: inherit;
+	}
+
+.kpmgToolTip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 0;
+}
+
+.kpmgToolTip-arrow-n {
+	border-bottom-color: #fff;
+	width: 10px;
+	height: 6px;
+}
+
+.kpmgToolTip-arrow-s {
+	border-top-color: #fff;
+	width: 10px;
+	height: 6px;
+}
+
+.kpmgToolTip-arrow-e {
+	border-left-color: #fff;
+	width: 6px;
+	height: 10px;
+}
+
+.kpmgToolTip-arrow-w {
+	border-right-color: #fff;
+	width: 6px;
+	height: 10px;
+}
+
+.kpmgToolTip-n .kpmgToolTip-arrow {
+	top: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-nw .kpmgToolTip-arrow {
+	top: 0;
+	left: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-ne .kpmgToolTip-arrow {
+	top: 0;
+	right: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-s .kpmgToolTip-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-sw .kpmgToolTip-arrow {
+	bottom: 0;
+	left: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-se .kpmgToolTip-arrow {
+	bottom: 0;
+	right: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
+.kpmgToolTip-e .kpmgToolTip-arrow {
+	right: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-left-style: solid;
+	border-right: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.kpmgToolTip-w .kpmgToolTip-arrow {
+	left: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-right-style: solid;
+	border-left: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+}
+/* ------------ END Styles Taken From KPMGToolTip.css-----------------------------------------*/
+
+/* ------------ Style For help.aspx of Login Project -----------------------------------------*/
+.classRblAccType {
+}
+
+	.classRblAccType input[type=radio] {
+		vertical-align: middle;
+	}
+/* ------------ END Style For help.aspx of Login Project -------------------------------------*/
+
+/* ---------------------------- START Travel Tracker pages ----------------------*/
+.validation-message {
+	text-align: left;
+	margin-top: 3px;
+	margin-left: 3px;
+}
+/* ---------------------------- START Travel Tracker pages ----------------------*/
+
+/* ------------ Begin Styles For OrganizerDocUpload.aspx-----------------------------------------*/
+.docUploadModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	min-height: 100%;
+	width: 100%;
+	background-color: white;
+}
+
+.docUploadProgress {
+	font-family: Arial;
+	font-size: 10pt;
+	display: none;
+	position: fixed;
+	background-color: transparent;
+	z-index: 999;
+}
+
+.docUploadSuccMess {
+	width: auto;
+	height: auto;
+	margin: 7px 6px;
+	font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	border-radius: 5px;
+	color: #68a900;
+}
+
+.docOverlayAlert {
+	z-index: 100;
+	left: 200px;
+	top: 200px;
+	position: absolute;
+	float: left;
+	border: 1px solid;
+	background-color: White;
+	padding: 10px;
+}
+/* ------------ End Styles For OrganizerDocUpload.aspx-----------------------------------------*/
+.datepicker::-ms-clear {
+	display: none !important;
+}
+
+/* ------------ Begin Styles For EditPassword.aspx-----------------------------------------*/
+.EditPassword {
+	margin: 10px;
+}
+
+	.EditPassword .FormTable input[type="password"] {
+		width: 70%;
+	}
+/* ------------ End Styles For EditPassword.aspx-----------------------------------------*/
+
+/* ------------ Begin Styles For ajax validation -----------------------------------------*/
+.customCalloutStyle div, .customCalloutStyle td {
+	border: solid 1px Black;
+	background-color: lemonchiffon;
+	padding: 0px 0px 0px 0px;
+}
+
+.customCalloutStyle .ajax__validatorcallout_popup_table {
+	display: none;
+	border: none;
+	background-color: transparent;
+	padding: 0px;
+	white-space: normal !important;
+	position: fixed !important;
+}
+
+.customCalloutStyle .ajax__validatorcallout_popup_table_row {
+	vertical-align: top;
+	height: 100%;
+	background-color: transparent;
+	padding: 0px;
+}
+
+.customCalloutStyle .ajax__validatorcallout_callout_cell {
+	width: 20px;
+	height: 100%;
+	text-align: right;
+	vertical-align: top;
+	border: none;
+	background-color: transparent;
+	padding: 0px;
+}
+
+.customCalloutStyle .ajax__validatorcallout_callout_table {
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	padding: 0px;
+}
+
+.customCalloutStyle .ajax__validatorcallout_callout_table_row {
+	background-color: transparent;
+	padding: 0px;
+}
+
+.customCalloutStyle .ajax__validatorcallout_callout_arrow_cell {
+	padding: 8px 0px 0px 0px;
+	text-align: right;
+	vertical-align: top;
+	font-size: 1px;
+	border: none;
+	background-color: transparent;
+}
+
+	.customCalloutStyle .ajax__validatorcallout_callout_arrow_cell .ajax__validatorcallout_innerdiv {
+		font-size: 1px;
+		position: relative;
+		left: 1px;
+		border-bottom: none;
+		border-right: none;
+		border-left: none;
+		width: 15px;
+		background-color: transparent;
+		padding: 0px;
+	}
+
+		.customCalloutStyle .ajax__validatorcallout_callout_arrow_cell .ajax__validatorcallout_innerdiv div {
+			height: 1px;
+			overflow: hidden;
+			border-top: none;
+			border-bottom: none;
+			border-right: none;
+			padding: 0px;
+			margin-left: auto;
+		}
+
+.customCalloutStyle .ajax__validatorcallout_error_message_cell {
+	font-family: Verdana;
+	font-size: 10px;
+	padding: 5px;
+	border-right: none;
+	border-left: none;
+	width: 100%;
+	white-space: normal !important;
+}
+
+.customCalloutStyle .ajax__validatorcallout_icon_cell {
+	width: 20px;
+	padding: 5px;
+	border-right: none;
+}
+
+.customCalloutStyle .ajax__validatorcallout_close_button_cell {
+	vertical-align: top;
+	padding: 0px;
+	text-align: right;
+	border-left: none;
+}
+
+	.customCalloutStyle .ajax__validatorcallout_close_button_cell .ajax__validatorcallout_innerdiv {
+		border: none;
+		text-align: center;
+		width: 10px;
+		padding: 2px;
+		cursor: pointer;
+	}
+/* ------------ End Styles For ajax validation -----------------------------------------*/
+
+
+/* ------------ New branding --------------------------------*/
+#branding {
+	background-color: transparent;
+	height: 70px;
+}
+
+
+.modal {
+	display: none;
+}
+
+	.modal.k-window-content {
+		height: 100%;
+	}
+
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 1rem 1.5rem;
+	width: 80%;
+	font-size: 14px;
+	color: black;
+}
+
+.modal-contentbody {
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.modal-contentleft {
+	width: 25%;
+	float: left;
+	padding-top: 12px;
+}
+
+.modal-contentright {
+	width: 75%;
+	float: right;
+}
+
+	.modal-contentright h1 {
+		color: black;
+	}
+
+.modal-action {
+	width: 100%;
+	float: right;
+	padding-top: 12px;
+}
+
+	.modal-action a {
+		color: white;
+	}
+
+		.modal-action a.link {
+			color: #106caa !important;
+			text-decoration: underline !important;
+		}
+
+/* ------------ Custom Radio button --------------------------------*/
+
+.r-group {
+	background: #CCC;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 90px;
+	padding: 0px;
+	margin-right: 10px;
+	display: inline-table;
+	position: relative;
+	/*min-width:74px;*/
+}
+
+.r-yes, .r-no {
+	display: table-cell;
+	white-space: nowrap;
+}
+
+	.r-no input, .r-yes input {
+		opacity: 0;
+		position: absolute;
+	}
+
+		.r-yes input[type=radio]:checked:focus + label, .r-no input[type=radio]:checked:focus + label {
+			border: 1px solid rgba(81, 203, 238, 1);
+		}
+
+		.r-yes input[type=radio]:focus + label, .r-no input[type=radio]:focus + label {
+			border: 1px solid rgba(81, 203, 238, 1);
+		}
+
+	.r-yes label {
+		border: 1px solid transparent;
+		display: inline-block;
+		padding: 3px 10px;
+		border-radius: 90px 0 0 90px;
+		color: #444;
+		font-size: 10px;
+		min-width: 26px;
+		text-align: center;
+	}
+
+	.r-no label {
+		border: 1px solid transparent;
+		display: inline-block;
+		padding: 3px 10px;
+		border-radius: 0 90px 90px 0;
+		color: #444;
+		font-size: 10px;
+		min-width: 26px;
+		text-align: center;
+	}
+
+	.r-yes input[type=radio]:checked + label {
+		background: #72c407;
+		color: #fff;
+		border: 1px solid rgba(0,0,0,.15);
+	}
+
+	.r-no input[type=radio]:checked + label {
+		background: #ff0000;
+		color: #fff;
+		border: 1px solid rgba(0,0,0,.15);
+	}
+/* modals */
+
+.k-window, .k-window.k-state-focused {
+	border: 10px solid rgba(0,0,0,.45) !important;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 0 15px -4px #222 !important;
+	box-shadow: 0 0 15px -4px #222 !important;
+	background-color: #fff;
+	background-clip: padding-box;
+	color: #595959
+}
+.k-overlay {
+	background-color: #fff !important;
+}
+
+.MBDivBankDetails {
+    width: 95%;
+}
+
+.MBDivBankDetailsUL {
+    list-style: none;
+    margin-left: 20px;
+}
+
+.MBDetailsLI {
+    margin: 10px 0;
+}
+.MBContentDetails {
+    margin-left: 10px;
+}
+.MBBottom {
+    margin-bottom: 60px;
+}
+
+.MBValidationSum {
+    margin-left: 30px;
+    margin-bottom: 10px
+}
+
+/*eSignaure Styles - Begin*/
+ol.progressStep[data-steps="2"] li {
+    width: 49%;
+}
+
+ol.progressStep[data-steps="3"] li {
+    width: 33%;
+}
+
+ol.progressStep[data-steps="4"] li {
+    width: 24%;
+}
+
+ol.progressStep[data-steps="5"] li {
+    width: 19%;
+}
+
+ol.progressStep[data-steps="6"] li {
+    width: 16%;
+}
+
+ol.progressStep[data-steps="7"] li {
+    width: 14%;
+}
+
+ol.progressStep[data-steps="8"] li {
+    width: 12%;
+}
+
+ol.progressStep[data-steps="9"] li {
+    width: 11%;
+}
+
+.progressStep {
+    width: 100%;
+    list-style: none;
+    list-style-image: none;
+    margin: 20px 0 20px 0;
+    padding: 0;
+    display: table;
+}
+
+    .progressStep li {
+        text-align: center;
+        position: relative;
+        margin-top: 10px;
+        display: table-cell;
+    }
+
+    .progressStep .name {
+        display: block;
+        vertical-align: bottom;
+        text-align: center;
+        margin-bottom: 0.3em;
+        color: black;
+        opacity: 0.3;
+    }
+
+    .progressStep .step {
+        color: white;
+        background-color: silver;
+        border-radius: 50%;
+        line-height: 2.5em;
+        width: 2.5em;
+        height: 2.5em;
+        display: block;
+        z-index: 2;
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid rgba(0,0,0,.15);
+    }
+
+        .progressStep .step span {
+            opacity: 1;
+        }
+
+    .progressStep .active .name,
+    .progressStep .active .step span {
+        opacity: 1;
+        font-weight: bold;
+        color: #1e74ab;
+    }
+
+    /*.progressStep li:before {
+        content: "";
+        display: block;
+        background-color: darkgrey;
+        height: 0.4em;
+        width: 51%;
+        position: absolute;
+        bottom: 0.6em;
+        left: -10px;
+        z-index: 999;
+    }*/
+
+    .progressStep li:after {
+        content: "";
+        display: block;
+        background-color: silver;
+        height: 0.25em;
+        width: 100%;
+        position: absolute;
+        bottom: 1em;
+        left: 50%;
+        z-index: 1;
+        margin-left: 0.9em;
+        border: 1px solid rgba(0,0,0,.15);
+    }
+
+    .progressStep li:first-of-type li:before {
+        display: none;
+    }
+
+    .progressStep li:last-of-type:after {
+        display: none;
+    }
+
+    .progressStep .done .step,
+    .progressStep .done .step:before,
+    .progressStep li.done:after {
+        background-color: #72c407;
+    }
+
+    .progressStep li.active .step {
+        background-color: #41c9ff;
+    }
+
+    .progressStep .done .step:after {
+        content: '✓';
+        font-size: 14px;
+    }
+
+    .progressStep .active .step:after {
+        content: '·';
+        font-size: 14px;
+    }
+
+.contenttxtzone {
+    /*width: 100%;*/
+    max-height: 290px;
+    padding: 8px;
+    border: 1px solid #c2c2c2;
+    border-radius: 3px;
+    font-size: 13px;
+    box-sizing: border-box;
+    -moz-box-shadow: inset 0 3px 4px #efefef;
+    -webkit-box-shadow: inset 0 3px 4px #efefef;
+    box-shadow: inset 0px 3px 4px #efefef;
+    color: gray;
+    overflow: auto;
+}
+
+
+.canvas-item {
+    cursor: url('/Images/pencil.cur'),default;
+}
+
+    .canvas-item:active {
+        cursor: url('/Images/pencil.cur'),default;
+    }
+
+.signature-box {
+    /*border: 2px dotted #009BFF !important;
+            border-radius: 15px;
+            background-color: #fff;*/
+    display: table-cell;
+    box-sizing: border-box;
+}
+
+.signature-pad {
+    margin: auto;
+    height: auto;
+}
+
+.signature-pad--body {
+    min-height: 120px;
+}
+
+.signature-pad--actions {
+    overflow: hidden;
+}
+
+    .signature-pad--actions > div:first-child {
+        float: left;
+    }
+
+    .signature-pad--actions > div:last-child {
+        float: right;
+    }
+
+.signature-pad {
+    float: left;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 10px;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 460px;
+    /*background-color: #fff;*/
+    padding: 16px;
+    border: 1px solid #ccc;
+    box-sizing:border-box;
+}
+
+    .signature-pad::before,
+    .signature-pad::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 40%;
+        height: 10px;
+        bottom: 10px;
+        background: transparent;
+        /*box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);*/
+    }
+
+    .signature-pad::before {
+        left: 20px;
+        /*-webkit-transform: skew(-3deg) rotate(-3deg);
+                transform: skew(-3deg) rotate(-3deg);*/
+    }
+
+    .signature-pad::after {
+        right: 20px;
+        /*-webkit-transform: skew(3deg) rotate(3deg);
+                transform: skew(3deg) rotate(3deg);*/
+    }
+
+.signature-pad--body {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+
+    .signature-pad--body
+    canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+    }
+
+.signature-pad--footer {
+    color: #444;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 8px;
+}
+
+.signature-pad--actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.font12 {
+	font-size: 12px;
+}
+.font14 {
+	font-size: 14px;
+}
+
+.font13 {
+    font-size: 13px;
+}
+.font15 {
+	font-size: 15px;
+}
+.font16 {
+	font-size: 16px !important;
+}
+.font16header {
+	font-size: 16px;
+	color:#68a900;
+	font-weight:600;
+	margin:6px 0;
+}
+
+.fontBold {
+	font-weight: bold;
+}
+
+.colorBannerBlue {
+	color: #005EB8;
+}
+
+.eSignbutton {   
+    line-height: 25px!important;    
+}
+
+/*eSignaure Styles - End*/
+
+.secondSubmissionMsgDiv {
+    height: 160px !important;
+    padding: 120px 0 0 0 !important;
+}
+.eSignVdHlink{
+    margin-top: -5px;
+}
+.eSignVideoDiv {
+    float: right;
+}
+.eSignVideoIcon {
+    background: url(images/eSignVideoPlay.png) no-repeat;
+    width: 20px;
+    height: 21px;
+    padding-right: 10px;
+    vertical-align: middle;
+    display: inline-block !important;
+}
+
+#divSignatureCapture div.font13 {
+	width: calc(100% - 150px) !important;
+	float: left;
+}
+</style>  </head>
+  <body style='padding:10px 10px 10px 10px;'>
+ <div class='widget-content-wrapper'> <form>
+<table border='0'><tr><td width='700px'>
+<table>
+	<tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>PROFILE</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Basic Information</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you married (e.g., common-law marriage, civil union or other recognized partnerships)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Gender</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Male</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >First name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Diego</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Middle name</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Antonio</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Last name/Surname<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Grecco Ribeiro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Initials</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>DR</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Maiden name</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Occupation/Profession</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Date of birth (e.g., 31 Dec 1980)<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>09 Jul 1982</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of citizenship or nationality<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Brazil</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of second citizenship or nationality</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you a US Green Card holder?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you married (e.g., common-law marriage, civil union or other recognized partnerships)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Gender</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Female</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >First name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Keith</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Middle name</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Last name/Surname<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Chen de Christo Ribeiro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Initials</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Maiden name</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Occupation/Profession</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Date of birth (e.g., 31 Dec 1980)<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>09 Jul 1974</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of citizenship or nationality<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Brazil</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of second citizenship or nationality</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you a US Green Card holder?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Employment Snapshot</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Is your spouse also working? (Select No if not applicable or if not including your spouse's personal and tax information in this questionnaire.)<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >What is your home country?</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Brazil</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Your employment situation in 2024<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Long term assignment (> 1 year)</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Assignment start date (e.g., 01 Jan 2023)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>09 Sep 2024</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Assignment end date (e.g., 31 Dec 2026)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >If the date of arrival in the host country for the assignment/contract is different from the assignment/contract start date as mentioned in the assignment/contract letter, then please specify your date of arrival</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Enter the date you started providing services in your current assignment country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >If your current assignment/contract has ended and the date of departure is different from the assignment/contract end date, then please specify your date of departure</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Have you been on more than one assignment during 2024? If Yes, please explain in the Notes.</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Have there been any changes in the contractual details of your assignment such as signing a contract extension, agreeing to local terms, or applying for a new work permit?</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you participating in the Dutch 30% ruling?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >What is the start date of your 30% ruling?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>09 Sep 2024</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you work in another country (before/after migration or during a period of non-residency)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Is your spouse also working? (Select No if not applicable or if not including your spouse's personal and tax information in this questionnaire.)<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >What is your home country?</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Your employment situation in 2024<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you participating in the Dutch 30% ruling?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you work in another country (before/after migration or during a period of non-residency)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Questions to Determine Your Tax Residency</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Country of residence</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of residence at beginning of year<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Brazil</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of residence at end of year<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Netherlands</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Netherlands</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse have income from a substantial interest in a Dutch company?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse make any assets available to a foreign or Dutch company in which you hold a direct or indirect substantial interest?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse own real estate located in the Netherlands?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Country of residence</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of residence at beginning of year<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country of residence at end of year<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Netherlands</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse have income from a substantial interest in a Dutch company?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse make any assets available to a foreign or Dutch company in which you hold a direct or indirect substantial interest?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you and/or your spouse own real estate located in the Netherlands?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Questionnaire Defaults</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Select a default currency to use throughout the questionnaire<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Euro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Select a default currency to use throughout the questionnaire<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>PERSONAL INFO</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Contact Information - General</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Home telephone number (including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Business telephone number (including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Other phone (mobile, including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>+31 6 4329 4332</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Home telephone number (including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Business telephone number (including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Other phone (mobile, including country code)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Contact Information - E-mail</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Preferred e-mail address<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>diego.ribeiro@rabobank.com</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Other e-mail address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>dagr9782@gmail.com</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Marital Information</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Current marital status</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Legally married</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Indicate the date your current marital status took effect (e.g., 31 Dec 2000)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>26 Jun 2004</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Please provide any additional details in case your marital status changed during 2024 (e.g., deceased spouse)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Spouse Information</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Name of your spouse (if applicable and not already provided)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >If you are living together and are registered at the same address, do any of these apply to you?<ol><li>you have joint dependents</li><li>you jointly own the primary residence</li><li>you have a joint pension plan</li><li>you have a notarial cohabitation contract</li></ol><br>If Yes, please provide full name, date of birth and BSN in the Notes.</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>We have two children:
+Luan Chen de Christo Ribeiro BSN 6947.71.806
+Theo Chen de Christo Ribeiro BSN 5799.34.020</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Addresses</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Current Residence Address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Julianaweg 10A</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address line 2</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Apartment number</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >City</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Utrecht</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >State/Province/Canton</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >County</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Utrecht</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Zip/Postal code</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>3525 VG</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Netherlands</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-weight:bold;font-size:90%;'>Current Residence Address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address line 2</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Apartment number</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >City</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >State/Province/Canton</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >County</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Zip/Postal code</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Family Questions</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Does your family continue to live in your home country?</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Indicate the date your family moved to your new work location</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>08 Sep 2024</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Identification Number(s) (Tax, Social Security, Others)</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >BSN (Dutch)<i class='icon-warning-sign blue addSpaceToTheLeft'></i></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>6907.62.264</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >BSN (Dutch)<i class='icon-warning-sign blue addSpaceToTheLeft'></i></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>3846.94.081</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Dependent Children</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Do you have any dependent children?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Dependent Children - Summary</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Basic Information</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >First name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Luan</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Last name/Surname (if different from your last name)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Chen de Christo Ribeiro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Gender</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Male</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Date of birth (e.g., 31 Dec 2005)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>11 Sep 2007</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Relationship to you</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Child</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Enter the number of months that this child lived in your home during 2024</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>12</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Dependent Children - Summary</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Basic Information</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >First name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Theo</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Last name/Surname (if different from your last name)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Chen de Christo Ribeiro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Gender</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Male</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Date of birth (e.g., 31 Dec 2005)</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>10 Sep 2010</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Relationship to you</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Child</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Enter the number of months that this child lived in your home during 2024</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>12</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Alimony Payments</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you pay alimony or spousal maintenance?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Alimony or Support Receipts for Yourself</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive any alimony or support payments for yourself?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>EMPLOYMENT</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Home Country Employer</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Name of employer in home country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Rabobank</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Name of employer in home country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Host Country Employer</div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Taxpayer</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Name of employer in host country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Co&#246;peratieve Rabobank U.A.</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>Host country employer address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Croeselaan 18</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address line 2</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >City</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Utrecht</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >State/Province/Canton</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Zip/Postal code</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>3521 CB</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Netherlands</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3"><div><hr size='1' noshade></div></td>
+	</tr><tr>
+		<td colspan="3"><div><b>&nbsp;&nbsp;Spouse</b></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Name of employer in host country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>Host country employer address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Street address line 2</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >City</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >State/Province/Canton</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Zip/Postal code</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Employment Income</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you have any employment income or receive any benefits from your employer that was not already provided to KPMG? If you are unsure, choose Yes.<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Have you changed employment during the year or received compensation from a prior employment during the year?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did your spouse have compensation/remuneration? (If single, select No.)<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Employment Income - General Information</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>If your compensation has already been provided to KPMG by your employer, you do not need to complete the next section regarding your employment income.</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>However, if this is not the case, or for example:</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><ul><li>you have changed employment during the year</li></ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><ul><li>you received compensation for a prior employment</li></ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><ul><li>you need to provide your spouse's employment income</li></ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>please complete the next section regarding employment income.</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><br>In order to prepare your tax return, KPMG in general needs information regarding: <ul>    <li>your pre and post assignment income</li>    <li>your home and host as well as third country income</li>    <li>your income received from current as well as other employers</li> </ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Employment Income - Summary</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Required Documents</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Ownership</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Taxpayer</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Employer name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Co&#246;peratieve Rabobank U.A.</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'>Utilizing the 'Add Document(s)' link in the Utilities menu, please provide a copy of:</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><ul><li>All Annual Wage Statements </li></ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div><table align='center' width='90%'><tr><td style='font-style:italic;font-weight:bold;'><ul><li>An annual compensation statement detailing the components of your remuneration received. The statement should be in English.</li></ul></td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Does your compensation, as reported by your employer, accurately reflect your earnings (e.g., housing expenses, tax payments, home leave)?<br><br>If No, please provide details on the Compensation/Remuneration - Details Page.<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you transfer from one company payroll to another?</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Termination Payments</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive any payments in respect of termination of employment?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Stock Options</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >In 2024 did you participate in any stock option plan or own stock options received from your current or any previous employer?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Share Awards</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >In 2024 did you participate in any other share based compensation plan from your current or any previous employer (e.g., Restricted Stock, RSU, Performance Shares, Employee Stock Purchase Plan)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Cash Awards</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >In 2024 did you receive any other cash awards relating to equity (e.g., Phantom Stock, Stock Appreciation Rights)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Third Party Benefits</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive any benefits from a third party (i.e., not your employer) that arose as a result of your employment?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Board of Directors/Supervisory Board</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Were you an officer or director of a corporate entity at any time during the year?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Business Travel and Commuting Expenses</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you incur any unreimbursed business travel or commuting expenses?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Company Pension Contributions (Contributions Made by Taxpayer)</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you contribute to/participate in any pension or retirement plan sponsored by your employer?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Company Pension Contributions (Contributions Made by Taxpayer) - Summary</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Details</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Ownership</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Taxpayer</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Location of plan<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Netherlands</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Currency</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Euro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >If you left the Netherlands in 2024 and contributed to an employer funded pension plan, please include the value of your protective income if applicable</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>16.555,44</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>PROPERTY/INVESTMENTS</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Bank Accounts and Other Receivables</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you have any bank accounts?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Yes</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Bank Accounts and Other Receivables - Summary</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Details</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Ownership</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Taxpayer</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Bank name<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Rabobank</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Country where the bank is located</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Netherlands</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Account number</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>NL04 RABO 0384 6971 88</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Currency</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>Euro</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Account balance on 01 Jan 2024</td></tr></table></div></td><td colspan="2" style="width:300px;"><div>0,00</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Notes</td></tr></table></div></td><td colspan="2" style="width:300px;"><div></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Dividends</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive dividend income during 2024?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Sale or Disposition of Assets (Capital Gains and Losses)</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you have income from the sale or disposition of assets (e.g., stocks, personal property, assets held for investment)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Property</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you own property consisting of land or building (including your principal residence)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you have rental real estate?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Sale or Disposition of Real Estate</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you sell any land or buildings, including your personal home?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Mortgage Expenses</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you pay any mortgage interest expenses?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Residual Debt on Former Main Residence</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you incur a residual debt with the sale of your former main residence after 28 Oct 2012 and before 1 Jan 2018?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Trusts/Estates</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you own an interest in any trusts or estates?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Undivided Estates</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you have shares or income from undivided estates?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Other Assets and Liabilities</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you, your spouse or minor children have any assets in or outside of the Netherlands as of 01 Jan 2024? Answer No if your worldwide assets, net of debts (except mortgage debt for your main residence), were less than EUR 57,000 (or less than EUR 114,000 combined if you have a partner), as your assets do not need to be declared. Please note that debts of EUR 3,400 (or EUR 6,800 combined if you have a partner), or less are not required to be considered.<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>OTHER INCOME/EXPENSES</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Self-Employment/Business</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Are you self-employed or do you have your own business?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Partnerships or Other Entities</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you own interest in a pass-through entity such as partnership or LLC?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Government Payments</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive any payments from any governmental agency (e.g., old age benefits, unemployment benefit, child benefit, government/military pensions, social security benefits, etc.) excluding income tax refunds?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Royalties</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive royalty income?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Miscellaneous Income</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you receive any other income not requested previously in this Interview?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>MISCELLANEOUS DEDUCTIONS/CREDITS</b></font></b></td></tr></table></div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Charitable Contributions/Donations</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you make any charitable contributions?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Medical Expense Payments</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you pay any medical expenses not covered by health insurance and not reimbursed?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Tax Overpayments Refunded or Applied</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td ><b>Tax Refunds:</b> Did you receive a refund, or apply an overpayment, of any state, local, or federal income tax?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Income Tax Payments (Federal/Country)</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >In 2024 did you pay country/federal income taxes (tax bill, tax assessment)?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Non-Company Pension Plan/Life Insurance</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you contribute to any pension or retirement plan not sponsored by your employer or to any life insurance policy?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr style="background-color:LightGrey;">
+		<td colspan="3" style="font-weight:bold;height:18px;width:100%;"><div>&nbsp;&nbsp;Other Insurance Premiums</div></td>
+	</tr><tr>
+		<td align="left" style="width:400px;"><div style="margin-left:10px;"><table align='center' width='90%'><tr><td >Did you pay for any other insurance premiums except life and pension insurances in 2024?<span class='redAsterisk'>*</span></td></tr></table></div></td><td colspan="2" style="width:300px;"><div>No</div></td>
+	</tr><tr>
+		<td colspan="3" style="font-weight:bold;width:100%;"><div><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td><p style='page-break-before: always'></p></td></tr></table><table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td width='10' bgcolor='#006699'>&nbsp;</td><td bgcolor='#006699' colspan='3' height='18'><b><font color='#FFFFFF'><b>REQUIRED DOCUMENTS</b></font></b></td></tr></table></div></td>
+	</tr><tr>
+		<td colspan="3"><div></div><table cellspacing="0" cellpadding="5" rules="all" border="1" style="border-collapse:collapse;">
+			<tr style="background-color:LightGrey;">
+				<th style="font-weight:bold;height:25px;width:40%;">Type of File or Document</th><th style="font-weight:bold;height:25px;width:60%;">Description/Information to be Provided</th>
+			</tr><tr>
+				<td style="font-weight:normal;"><div>Year-End Statement</div></td><td style="font-weight:normal;"><div>Provide a copy of your year-end statement.</div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table></td></tr></table></div></form></body></html>
